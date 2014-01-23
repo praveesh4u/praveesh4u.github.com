@@ -9,7 +9,7 @@
   <meta name="author" content="praveesh4u@gmail.com">
 
   
-  <meta name="description" content="Setting up HWIOAuth Bundle 1. Add the HWI OAuth bundle to the project Extract OAuthBundle.zip file atached alongwith this and copy the contents to &hellip;">
+  <meta name="description" content="Setting up HWIOAuth Bundle 1. Add the HWI OAuth bundle to the project Download the OAuthBundle from the official git repository and copy the contents &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -102,11 +102,11 @@
 
 <p><strong>1. Add the HWI OAuth bundle to the project</strong></p>
 
-<p> Extract  OAuthBundle.zip file atached alongwith this and copy the contents to ProjectRoot/vendor/bundles/HWI/Bundle/OAuthBundle</p>
+<p> Download the OAuthBundle from the <a href="https://github.com/hwi/HWIOAuthBundle/tree/0.2">official git repository</a> and copy the contents to ProjectRoot/vendor/bundles/HWI/Bundle/OAuthBundle</p>
 
 <p><strong>2. Enable the bundle in AppKernel.php</strong></p>
 
-<figure class='code'><figcaption><span>AppKernel.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>AppKernel </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -131,8 +131,8 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p> HWI OAuth bundle needs Sensio Buzz bundle for proper functioning. So, add the buzz bundle to your project if it is not already added. If it is not added,
- you will get an error message like this</p>
+<p> HWI OAuth bundle needs Sensio Buzz bundle for proper functioning. So, add the buzz bundle to your project if it is not already added. You may download it from <a href="https://github.com/sensiolabs/SensioBuzzBundle">here</a>. If it is not added,
+ you may get an error message like this</p>
 
 <figure class='code'><figcaption><span>Error</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='html'><span class='line'> Fatal error: Class &#39;Buzz\Client\Curl&#39; not found in /home/xxxx/my-projects/OAuthProject/app/cache/dev/appDevDebugProjectContainer.php on line 2110 Call Stack: 0.0001 321828 1
@@ -176,7 +176,7 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>4. Import the security_factory.xml to security.yml</strong></p>
+<p><strong>4. Import the security_factory.xml to security section of security.yml</strong></p>
 
 <figure class='code'><figcaption><span>security.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -227,11 +227,9 @@
 
 
 <p>          <br/>
-<strong>6.Create a User Provider Service</strong></p>
-
-<p>The bundle needs a service that is able to load users based on the user response of the oauth endpoint. If you have a custom service it should implement the interface: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface.
-For this, create a service named  xyz.oauth.user_provider.
-For this, first create a class caller XYZOAuthUserProvider and register it as a service.</p>
+<strong>6.Create a User Provider Service</strong><br>
+The bundle needs a service that is able to load users based on the user response of the oauth endpoint and the service should implement<br> <em>HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface</em>.<br>
+For this, first create a class caller XYZOAuthUserProvider .</p>
 
 <figure class='code'><figcaption><span>OAuthUserProvider.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -328,10 +326,10 @@ For this, first create a class caller XYZOAuthUserProvider and register it as a 
 </span></code></pre></td></tr></table></div></figure>
 
 
-<h1>CHECKING WHETHER THE USER EXISTS IN THE DATABASE AND GIVING PRIVILEGES ACCORDINGLY</h1>
+<h1>Checking whether the OAuth user exists in the local database</h1>
 
-<p>By default, a user who logs in through facebook or google is given ROLE_USER, and ROLE_OAUTH_USER. In this case, even though all the details required for a registered user are not available from Google or Facebook, the user still have all the privileges of ROLE_USER. This should not be the case. The user should
-not be granted all the provileges unless he completes his profile. So, for a user who logs in through Google or Facebook is given only ROLE_OAUTH_USER if he is not present in the database. If he is present in the database, he is granted ROLE_USER when he logs in through Google or Facebook. So, there should be a mechanism to check whether the OAUth user is present in the database or not.</p>
+<p>By default, a user who logs in through facebook or google is given <em>ROLE_USER</em>, and <em>ROLE_OAUTH_USER</em>. In this case, even though all the details required for a registered user are not available from Google or Facebook, the user still have all the privileges of ROLE_USER. This should not be the case. The user should
+not be granted all the provileges unless he completes his profile. So, for a user who logs in through Google or Facebook is given only <em>ROLE_OAUTH_USER</em> if he is not present in the database. If he is present in the database, he is granted <em>ROLE_USER</em> when he logs in through Google or Facebook. So, there should be a mechanism to check whether the OAUth user is present in the database or not.</p>
 
 <p><strong>Step 1</strong><br>
 Edit vendor/bundles/HWI/Bundle/OAuthBundle/Security/Core/User/OAuthUser.php
@@ -382,7 +380,7 @@ and modify the getRoles() function to return only ROLE_OAUTH_USER as role.</p>
 </ul>
 </blockquote></blockquote>
 
-<p>Although UserResponseInterface class has a getEmail() method, this won&rsquo;t return the email address for all the service providers as the response for each service is different</p>
+<p>Although UserResponseInterface class has a getEmail() method, this won&rsquo;t return the email address for all the service providers as the response for each service provider is different</p>
 
 <p>A var_dump() for the response object for Facebook and Google are given below</p>
 
@@ -619,6 +617,29 @@ and modify the getRoles() function to return only ROLE_OAUTH_USER as role.</p>
 </span><span class='line'>    <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
 </span><span class='line'>
 </span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4. Then, hide or show options in the twig file according to the role of the user.</strong><br></p>
+
+<figure class='code'><figcaption><span>Twig</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;well&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">is_granted</span><span class="p">(</span><span class="s1">&#39;ROLE_USER&#39;</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>            <span class="nx">OPTIONS</span> <span class="nx">THAT</span> <span class="k">REQUIRE</span> <span class="nx">ROLE_USER</span> <span class="nx">PRIVILEGE</span>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>            <span class="nx">PROMPT</span> <span class="nx">TO</span> <span class="nx">REGISTER</span> <span class="nx">TO</span> <span class="nx">AVAIL</span> <span class="nx">ALL</span> <span class="nx">FEATURES</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">endif</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
