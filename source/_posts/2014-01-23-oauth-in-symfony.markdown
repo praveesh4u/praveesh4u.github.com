@@ -10,10 +10,10 @@ categories:
 
 **1. Add the HWI OAuth bundle to the project**
  
- Extract  OAuthBundle.zip file atached alongwith this and copy the contents to ProjectRoot/vendor/bundles/HWI/Bundle/OAuthBundle
-
+ Download the OAuthBundle from the [official git repository](https://github.com/hwi/HWIOAuthBundle/tree/0.2) and copy the contents to ProjectRoot/vendor/bundles/HWI/Bundle/OAuthBundle
+ 
 **2. Enable the bundle in AppKernel.php**
-``` php AppKernel.php
+``` php AppKernel 
 public function registerBundles()
     {
         $bundles = array(
@@ -26,8 +26,8 @@ public function registerBundles()
         return $bundles;
     } 
 ```
- HWI OAuth bundle needs Sensio Buzz bundle for proper functioning. So, add the buzz bundle to your project if it is not already added. If it is not added,
- you will get an error message like this
+ HWI OAuth bundle needs Sensio Buzz bundle for proper functioning. So, add the buzz bundle to your project if it is not already added. You may download it from [here](https://github.com/sensiolabs/SensioBuzzBundle). If it is not added,
+ you may get an error message like this
 
 ``` html Error
  Fatal error: Class 'Buzz\Client\Curl' not found in /home/xxxx/my-projects/OAuthProject/app/cache/dev/appDevDebugProjectContainer.php on line 2110 Call Stack: 0.0001 321828 1
@@ -55,7 +55,7 @@ Register the buzz bundle namespace before HWI bundle's namespace to avoid this e
     resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
     prefix:   /connect
 ```
-**4. Import the security_factory.xml to security.yml**
+**4. Import the security_factory.xml to security section of security.yml**
 ``` yaml security.yml
 security:
     factories:
@@ -81,11 +81,9 @@ security:
             client_secret:       _rFBqWyAGHFvbdN-EgUs52uGK2Z
             scope:               "https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile"
 ```            
-**6.Create a User Provider Service**
-
-The bundle needs a service that is able to load users based on the user response of the oauth endpoint. If you have a custom service it should implement the interface: HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface.
-For this, create a service named  xyz.oauth.user_provider.
-For this, first create a class caller XYZOAuthUserProvider and register it as a service.
+**6.Create a User Provider Service**<br>
+The bundle needs a service that is able to load users based on the user response of the oauth endpoint and the service should implement<br> _HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface_.<br>
+For this, first create a class caller XYZOAuthUserProvider .
 
 ``` php OAuthUserProvider.php
 <?php
@@ -142,10 +140,10 @@ oauth:
 
     	       
 
-#CHECKING WHETHER THE USER EXISTS IN THE DATABASE AND GIVING PRIVILEGES ACCORDINGLY#
+#Checking whether the OAuth user exists in the local database#
 
-By default, a user who logs in through facebook or google is given ROLE_USER, and ROLE_OAUTH_USER. In this case, even though all the details required for a registered user are not available from Google or Facebook, the user still have all the privileges of ROLE_USER. This should not be the case. The user should
-not be granted all the provileges unless he completes his profile. So, for a user who logs in through Google or Facebook is given only ROLE_OAUTH_USER if he is not present in the database. If he is present in the database, he is granted ROLE_USER when he logs in through Google or Facebook. So, there should be a mechanism to check whether the OAUth user is present in the database or not.
+By default, a user who logs in through facebook or google is given _ROLE_USER_, and _ROLE_OAUTH_USER_. In this case, even though all the details required for a registered user are not available from Google or Facebook, the user still have all the privileges of ROLE_USER. This should not be the case. The user should
+not be granted all the provileges unless he completes his profile. So, for a user who logs in through Google or Facebook is given only _ROLE_OAUTH_USER_ if he is not present in the database. If he is present in the database, he is granted _ROLE_USER_ when he logs in through Google or Facebook. So, there should be a mechanism to check whether the OAUth user is present in the database or not.
 
 **Step 1**<br>
 Edit vendor/bundles/HWI/Bundle/OAuthBundle/Security/Core/User/OAuthUser.php 
@@ -175,7 +173,7 @@ Next, edit the OAuthUserProvider.php file
 ```
 >>+ In the original configuration loadUserByOAuthUserResponse() function calls the loadUserByUsername() function with nickname as  the arguement. The nickname is obtained from the server response. In our entity user provider, we have defined email as a unique field. So, to check whether user exists in the database, we can use email. For this, we need to obtain the email from the response.
 
-Although UserResponseInterface class has a getEmail() method, this won't return the email address for all the service providers as the response for each service is different
+Although UserResponseInterface class has a getEmail() method, this won't return the email address for all the service providers as the response for each service provider is different
 
 A var_dump() for the response object for Facebook and Google are given below
 
@@ -298,4 +296,21 @@ public function loadUserByUsername($username)
     return $user;
     
 }
+```
+
+**4. Then, hide or show options in the twig file according to the role of the user.**<br> 
+
+``` php Twig
+
+    <div class="well">
+        {% if is_granted('ROLE_USER') %}
+            OPTIONS THAT REQUIRE ROLE_USER PRIVILEGE
+        {% else %}
+            PROMPT TO REGISTER TO AVAIL ALL FEATURES
+        
+        {% endif %}
+     
+    </div>
+
+
 ```
