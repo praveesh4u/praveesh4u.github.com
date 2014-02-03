@@ -62,6 +62,17 @@ security:
         - "%kernel.root_dir%/../vendor/bundles/HWI/Bundle/OAuthBundle/Resources/config/security_factory.xml" 
 ```
 **5.Add the resource owners in the config.yml. **
+For this, we need to register our app in Google and Facebook and obtain the client_id and the client_secret. In addition to that, we have to provide a redirect URL while configuring the app. The response after authenticating the user by the service providers is sent to this URL.
+
+For Google, this redirect URL is www.yourdomain.com/login/check-google. This address should be provide against the field labelled 'Redirect URIs'. Please see the screenshot below.
+![google api](https://lh3.googleusercontent.com/-ACpfWT-Hhh8/Uu9TJuMEndI/AAAAAAAAAGQ/rFFX0D7Ihy4/w757-h267-no/Oauth-Google.png "google api")
+
+For Facebook, once you register the app, click on 'Add platform' button and register your app as a web app. The redirect URL for Facebook is www.yourdomain.com/login/check-facebook. Enter this URL in 'Site URL' field and 'Mobile Site URL ' field under 'Website'. Please see the screenshot below.
+![facebook api](https://lh3.googleusercontent.com/-RxAO32PdrKs/Uu9TJQkx4nI/AAAAAAAAAGM/VZvTG4DpoZ4/w719-h577-no/Oauth-FB.png "facebook api")
+
+Then, provide the client_id and client_secret for Facebook and Google in the config.yml file 
+
+
 ``` yaml config.yml 
  hwi_oauth:
      #name of the firewall in which this bundle is active, this setting MUST be set
