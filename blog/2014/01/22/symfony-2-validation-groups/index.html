@@ -1,0 +1,325 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Symfony 2 Validation groups - The Starting Point</title>
+  <meta name="author" content="praveesh4u@gmail.com">
+
+  
+  <meta name="description" content="When more than one forms are associated with the same entity, the form validator will validate all the properties of that entity for all forms &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="The Starting Point" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47414157-1']);
+    _gaq.push(['_setDomainName','github.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText"></div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">The Starting Point</a></h1>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:praveesh4u.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      
+        <h1 class="entry-title">Symfony 2 Validation Groups</h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-22T23:51:28+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>When more than one forms are associated with the same entity, the form validator will validate all the properties of that entity for all forms associated with that entity. This would result in form errors as all the forms may not have fields for all the properties of that entity. For example, consider a User entity with username, email address, password, name and phone number as properties. The user needs to enter all these properties when he is initially registering. When the user needs to edit his profile, there he can&rsquo;t edit username and e mail address as these two properties are non-editable. So, the form for editing the profile won&rsquo;t have fields for username and e mail. If the we are using the normal validation, when the user tries to update his profile, the form validation would fail as Symfony would validate the form for username and e mail constraints too. To prevent this, we create validation groups. By creating validation groups, we define separate set of validation constraints for different forms.<br>
+Steps:<br>
+1. When writing a validation constraint, specify the validation group against it</p>
+
+<figure class='code'><figcaption><span>Validations.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">username</span><span class="err">:                      </span>
+</span><span class='line'><span class="err">    </span><span class="l-Scalar-Plain">- NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">5</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userRegistration</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span>
+</span><span class='line'><span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userUpdate</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span><span class="err"> </span>
+</span><span class='line'><span class="l-Scalar-Plain">phoneNumber</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span> <span class="p-Indicator">}</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Type</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">message</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">phone number should contain only numbers</span><span class="err"> </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.Specify the validation group in the form class in the getDefaultOptions function</p>
+
+<figure class='code'><figcaption><span>FormType</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kr">public</span> <span class="kd">function</span> <span class="nx">setDefaultOptions</span><span class="p">(</span><span class="nx">OptionsResolverInterface</span> <span class="nx">$resolver</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">$resolver</span><span class="o">-&gt;</span><span class="nx">setDefaults</span><span class="p">(</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Venom\BlogBundle\Entity\User&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">,</span> <span class="s1">&#39;userRegistration&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.Pass the validation group when form is created</p>
+
+<p>For the user registration action, we create the form with &lsquo;userRegistration&rsquo; validations:</p>
+
+<figure class='code'><figcaption><span>Registration Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userRegistration&#39;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For the user edit action, we create the form with &lsquo;userUpdate&rsquo; validations:</p>
+
+<figure class='code'><figcaption><span>Edit Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4.If the validation group is not specified when the form is created, the form will be validated for all the default validation constraints(The constraints for which a validation group is not specified)
+That is, in our case, a form created with no validation group would get validated only for the phone number field.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">praveesh4u@gmail.com</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-22T23:51:28+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/" data-via="@praveesh4u" data-counturl="http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left articlenav" href="/blog/2014/01/22/setting-up-octopress/" title="Previous Post: Setting Up Octopress">&laquo; Setting Up Octopress</a>
+      
+      
+        <a class="basic-alignment right articlenav" href="/blog/2014/01/23/oauth-in-symfony/" title="Next Post: OAuth in Symfony 2">OAuth in Symfony 2 &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/23/oauth-in-symfony/">OAuth in Symfony 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/22/symfony-2-validation-groups/">Symfony 2 Validation Groups</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/22/setting-up-octopress/">Setting Up Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117425680883198293763?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - praveesh4u@gmail.com -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'thestartingpoint';
+      
+        
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/';
+        var disqus_url = 'http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/';
+        var disqus_script = 'embed.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

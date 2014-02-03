@@ -1,0 +1,960 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>The Starting Point</title>
+  <meta name="author" content="praveesh4u@gmail.com">
+
+  
+  <meta name="description" content="Setting up HWIOAuth Bundle 1. Add the HWI OAuth bundle to the project Download the OAuthBundle from the official git repository and copy the contents &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://praveesh4u.github.io/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="The Starting Point" type="application/atom+xml">
+  <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-47414157-1']);
+    _gaq.push(['_setDomainName','github.io']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <div id="logo">
+  	<div id="logoLeft">{</div>
+  	<div id="logoText"></div>
+  	<div id="logoRight">}</div>
+  	<div class="clear"></div>
+  </div>
+  <h1><a href="/">The Starting Point</a></h1>
+  
+  <div class="clear"></div>
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:praveesh4u.github.io" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/01/23/oauth-in-symfony/">OAuth in Symfony 2</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-23T00:33:00+05:30" pubdate data-updated="true">Jan 23<span>rd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><h1>Setting up HWIOAuth Bundle</h1>
+
+<p><strong>1. Add the HWI OAuth bundle to the project</strong></p>
+
+<p> Download the OAuthBundle from the <a href="https://github.com/hwi/HWIOAuthBundle/tree/0.2">official git repository</a> and copy the contents to ProjectRoot/vendor/bundles/HWI/Bundle/OAuthBundle</p>
+
+<p><strong>2. Enable the bundle in AppKernel.php</strong></p>
+
+<figure class='code'><figcaption><span>AppKernel </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">registerBundles</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="nv">$bundles</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+</span><span class='line'>            <span class="o">.............................</span>
+</span><span class='line'>            <span class="k">new</span> <span class="nx">HWI\Bundle\OAuthBundle\HWIOAuthBundle</span><span class="p">(),</span>
+</span><span class='line'>        <span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="o">.................................</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="k">return</span> <span class="nv">$bundles</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p> HWI OAuth bundle needs Sensio Buzz bundle for proper functioning. So, add the buzz bundle to your project if it is not already added. You may download it from <a href="https://github.com/sensiolabs/SensioBuzzBundle">here</a>. If it is not added,
+ you may get an error message like this</p>
+
+<figure class='code'><figcaption><span>Error</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> Fatal error: Class &#39;Buzz\Client\Curl&#39; not found in /home/xxxx/my-projects/OAuthProject/app/cache/dev/appDevDebugProjectContainer.php on line 2110 Call Stack: 0.0001 321828 1
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p> To avoid this, copy the contents of buzz.zip atached along with this to PROJECT_ROOT/vendor</p>
+
+<p> Also, add the namespace for the OAuth bundle and the Buzz bundle to autoload.php</p>
+
+<figure class='code'><figcaption><span>Autoload.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'> <span class="nv">$loader</span><span class="o">-&gt;</span><span class="na">registerNamespaces</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+</span><span class='line'>   <span class="s1">&#39;Buzz&#39;</span><span class="o">=&gt;</span><span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor/buzz/lib&#39;</span><span class="p">,</span>
+</span><span class='line'>    <span class="s1">&#39;HWI&#39;</span><span class="o">=&gt;</span><span class="nx">__DIR__</span><span class="o">.</span><span class="s1">&#39;/../vendor/bundles&#39;</span><span class="p">,</span>
+</span><span class='line'> <span class="p">));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Register the buzz bundle namespace before HWI bundle&rsquo;s namespace to avoid this error</p>
+
+<figure class='code'><figcaption><span>Error</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'> &quot;Fatal error: Class &#39;Buzz\Client\Curl&#39; not found&quot;
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p></p>
+
+<p><strong>3. Import the routing file of HWI bundle to the projects routing.yml</strong></p>
+
+<figure class='code'><figcaption><span>Routing.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'> <span class="l-Scalar-Plain">hwi_oauth_redirect</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span> <span class="s">&quot;@HWIOAuthBundle/Resources/config/routing/redirect.xml&quot;</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span>   <span class="l-Scalar-Plain">/connect</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4. Import the security_factory.xml to security section of security.yml</strong></p>
+
+<figure class='code'><figcaption><span>security.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">security</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">factories</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="p-Indicator">-</span> <span class="s">&quot;%kernel.root_dir%/../vendor/bundles/HWI/Bundle/OAuthBundle/Resources/config/security_factory.xml&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>5.Add the resource owners in the config.yml. </strong></p>
+
+<figure class='code'><figcaption><span>config.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'> <span class="l-Scalar-Plain">hwi_oauth</span><span class="p-Indicator">:</span>
+</span><span class='line'>     <span class="c1">#name of the firewall in which this bundle is active, this setting MUST be set</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="l-Scalar-Plain">firewall_name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">main(What ever firewall name that you have specified in security.yml)</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">target_path_parameter</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">resource_owners</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">facebook</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span>                <span class="l-Scalar-Plain">facebook</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">client_id</span><span class="p-Indicator">:</span>           <span class="l-Scalar-Plain">48000000093708</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">client_secret</span><span class="p-Indicator">:</span>       <span class="l-Scalar-Plain">cda9csdsdsds8dc4dc0699448385c9016c7</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">scope</span><span class="p-Indicator">:</span>               <span class="s">&quot;email&quot;</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span>                <span class="l-Scalar-Plain">google</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">client_id</span><span class="p-Indicator">:</span>           <span class="l-Scalar-Plain">872410845454.apps.googleusercontent.com</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">client_secret</span><span class="p-Indicator">:</span>       <span class="l-Scalar-Plain">_rFBqWyAGHFvbdN-EgUs52uGK2Z</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">scope</span><span class="p-Indicator">:</span>               <span class="s">&quot;https://www.googleapis.com/auth/userinfo.email</span><span class="nv"> </span><span class="s">https://www.googleapis.com/auth/userinfo.profile&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>          <br/>
+<strong>6.Create a User Provider Service</strong><br>
+The bundle needs a service that is able to load users based on the user response of the oauth endpoint and the service should implement<br> <em>HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface</em>.<br>
+For this, first create a class caller XYZOAuthUserProvider .</p>
+
+<figure class='code'><figcaption><span>OAuthUserProvider.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="o">&lt;?</span><span class="nx">php</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">namespace</span> <span class="nx">XYZ\CoreBundle\Services</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">use</span> <span class="nx">HWI\Bundle\OAuthBundle\Security\Core\User\OAuthUserProvider</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">XYZOAuthUserProvider</span> <span class="k">extends</span> <span class="nx">OAuthUserProvider</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Then, register it as a service in services.yml file</p>
+
+<figure class='code'><figcaption><span>services.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">xyz.oauth.user_provider</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">class</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">XYZ\CoreBundle\Services\XYZOAuthUserProvider</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">tags</span><span class="p-Indicator">:</span>
+</span><span class='line'>      <span class="p-Indicator">-</span> <span class="p-Indicator">{</span> <span class="nv">name</span><span class="p-Indicator">:</span> <span class="nv">user.provider</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">arguments</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span><span class="s">&quot;@service_container&quot;</span><span class="p-Indicator">]</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>7. Modifications in the security.yml file</strong></p>
+
+<h6>1. Under Providers, add the service created in the previous step</h6>
+
+<figure class='code'><figcaption><span>security.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">providers</span><span class="p-Indicator">:</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">main</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">entity</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">class</span><span class="p-Indicator">:</span> <span class="nv">XYZCoreBundle</span><span class="p-Indicator">:</span><span class="nv">User</span> <span class="p-Indicator">}</span>
+</span><span class='line'>    <span class="l-Scalar-Plain">my_custom_hwi_provider</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">id</span><span class="p-Indicator">:</span> <span class="nv">tsz.oauth.user_provider</span> <span class="p-Indicator">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>2. Under Firewalls/main, add</h5>
+
+<figure class='code'><figcaption><span>security.yml</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">oauth</span><span class="p-Indicator">:</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">resource_owners</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">facebook</span><span class="p-Indicator">:</span>           <span class="s">&quot;/login/check-facebook&quot;</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">google</span><span class="p-Indicator">:</span>             <span class="s">&quot;/login/check-google&quot;</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">login_path</span><span class="p-Indicator">:</span>        <span class="l-Scalar-Plain">/connect/facebook</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">failure_path</span><span class="p-Indicator">:</span>      <span class="l-Scalar-Plain">/login</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">default_target_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/login</span>
+</span><span class='line'>        <span class="l-Scalar-Plain">oauth_user_provider</span><span class="p-Indicator">:</span>
+</span><span class='line'>            <span class="l-Scalar-Plain">service</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">xyz.oauth.user_provider</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>8. Import the login check routes corresponding to each resource owner in the routing.yml file</strong></p>
+
+<figure class='code'><figcaption><span>routing.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="err">   </span><span class="l-Scalar-Plain">facebook_login</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/login/check-facebook</span>
+</span><span class='line'>
+</span><span class='line'><span class="err">    </span><span class="l-Scalar-Plain">google_login</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">pattern</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/login/check-google</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<h1>Checking whether the OAuth user exists in the local database</h1>
+
+<p>By default, a user who logs in through facebook or google is given <em>ROLE_USER</em>, and <em>ROLE_OAUTH_USER</em>. In this case, even though all the details required for a registered user are not available from Google or Facebook, the user still have all the privileges of ROLE_USER. This should not be the case. The user should
+not be granted all the provileges unless he completes his profile. So, for a user who logs in through Google or Facebook is given only <em>ROLE_OAUTH_USER</em> if he is not present in the database. If he is present in the database, he is granted <em>ROLE_USER</em> when he logs in through Google or Facebook. So, there should be a mechanism to check whether the OAUth user is present in the database or not.</p>
+
+<p><strong>Step 1</strong><br>
+Edit vendor/bundles/HWI/Bundle/OAuthBundle/Security/Core/User/OAuthUser.php
+and modify the getRoles() function to return only ROLE_OAUTH_USER as role.</p>
+
+<p>Original function:</p>
+
+<figure class='code'><figcaption><span>Original function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoles</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;ROLE_USER&#39;</span><span class="p">,</span> <span class="s1">&#39;ROLE_OAUTH_USER&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Modified function:</p>
+
+<figure class='code'><figcaption><span>Modified function</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">getRoles</span><span class="p">()</span>
+</span><span class='line'>    <span class="p">{</span>
+</span><span class='line'>        <span class="k">return</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;ROLE_OAUTH_USER&#39;</span><span class="p">);</span>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>Step 2</strong></p>
+
+<p>Next, edit the OAuthUserProvider.php file</p>
+
+<blockquote><blockquote><ul>
+<li>Import the namespace of the bundle containing the User entity to OAuthUserProvider.php so that we can get the container inside OAuthUserProvider.php.</li>
+</ul>
+</blockquote></blockquote>
+
+<figure class='code'><figcaption><span>OAuthUserProvider.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">use</span> <span class="nx">Venom\XYZBundle\XYZBundle</span> <span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<blockquote><blockquote><ul>
+<li>In the original configuration loadUserByOAuthUserResponse() function calls the loadUserByUsername() function with nickname as  the arguement. The nickname is obtained from the server response. In our entity user provider, we have defined email as a unique field. So, to check whether user exists in the database, we can use email. For this, we need to obtain the email from the response.</li>
+</ul>
+</blockquote></blockquote>
+
+<p>Although UserResponseInterface class has a getEmail() method, this won&rsquo;t return the email address for all the service providers as the response for each service provider is different</p>
+
+<p>A var_dump() for the response object for Facebook and Google are given below</p>
+
+<p>Facebook:</p>
+
+<figure class='code'><figcaption><span>Facebook Response Dump</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>[&quot;paths&quot;:protected]=&gt;
+</span><span class='line'>  array(5) {
+</span><span class='line'>[&quot;identifier&quot;]=&gt;
+</span><span class='line'>string(2) &quot;id&quot;
+</span><span class='line'>[&quot;nickname&quot;]=&gt;
+</span><span class='line'>string(8) &quot;username&quot;
+</span><span class='line'>[&quot;realname&quot;]=&gt;
+</span><span class='line'>string(4) &quot;name&quot;
+</span><span class='line'>[&quot;email&quot;]=&gt;
+</span><span class='line'>NULL
+</span><span class='line'>[&quot;profilepicture&quot;]=&gt;
+</span><span class='line'>NULL
+</span><span class='line'>  }
+</span><span class='line'>  [&quot;response&quot;:protected]=&gt;
+</span><span class='line'>  array(13) {
+</span><span class='line'>[&quot;id&quot;]=&gt;
+</span><span class='line'>string(15) &quot;1XXXX5898097313&quot;
+</span><span class='line'>[&quot;name&quot;]=&gt;
+</span><span class='line'>string(12) &quot;XXXXXX&quot;
+</span><span class='line'>[&quot;first_name&quot;]=&gt;
+</span><span class='line'>string(9) &quot;XXXXX&quot;
+</span><span class='line'>[&quot;last_name&quot;]=&gt;
+</span><span class='line'>string(2) &quot;YY&quot;
+</span><span class='line'>[&quot;link&quot;]=&gt;
+</span><span class='line'>string(40) &quot;https://www.facebook.com/xxxx.yyy&quot;
+</span><span class='line'>[&quot;username&quot;]=&gt;
+</span><span class='line'>string(15) &quot;xxxx.yyy&quot;
+</span><span class='line'>[&quot;birthday&quot;]=&gt;
+</span><span class='line'>string(10) &quot;04/14/1900&quot;
+</span><span class='line'>[&quot;gender&quot;]=&gt;
+</span><span class='line'>string(4) &quot;male&quot;
+</span><span class='line'>[&quot;email&quot;]=&gt;
+</span><span class='line'>string(20) &quot;xxxx@yyyy.com&quot;
+</span><span class='line'>[&quot;timezone&quot;]=&gt;
+</span><span class='line'>float(5.5)
+</span><span class='line'>[&quot;locale&quot;]=&gt;
+</span><span class='line'>string(5) &quot;en_US&quot;
+</span><span class='line'>[&quot;verified&quot;]=&gt;
+</span><span class='line'>bool(true)
+</span><span class='line'>[&quot;updated_time&quot;]=&gt;
+</span><span class='line'>string(24) &quot;2013-07-19T09:59:22+0000&quot;
+</span><span class='line'>  }
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Google:</p>
+
+<figure class='code'><figcaption><span>Google response dump</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+</pre></td><td class='code'><pre><code class='html'><span class='line'>  [&quot;paths&quot;:protected]=&gt;
+</span><span class='line'>  array(5) {
+</span><span class='line'>    [&quot;identifier&quot;]=&gt;
+</span><span class='line'>    string(2) &quot;id&quot;
+</span><span class='line'>    [&quot;nickname&quot;]=&gt;
+</span><span class='line'>    string(4) &quot;name&quot;
+</span><span class='line'>    [&quot;realname&quot;]=&gt;
+</span><span class='line'>    string(4) &quot;name&quot;
+</span><span class='line'>    [&quot;email&quot;]=&gt;
+</span><span class='line'>    string(5) &quot;email&quot;
+</span><span class='line'>    [&quot;profilepicture&quot;]=&gt;
+</span><span class='line'>    string(7) &quot;picture&quot;
+</span><span class='line'>  }
+</span><span class='line'>  [&quot;response&quot;:protected]=&gt;
+</span><span class='line'>  array(8) {
+</span><span class='line'>    [&quot;id&quot;]=&gt;
+</span><span class='line'>    string(21) &quot;10493450YYYY981597842&quot;
+</span><span class='line'>    [&quot;email&quot;]=&gt;
+</span><span class='line'>    string(28) &quot;praveesh@abc.in&quot;
+</span><span class='line'>    [&quot;verified_email&quot;]=&gt;
+</span><span class='line'>    bool(true)
+</span><span class='line'>    [&quot;name&quot;]=&gt;
+</span><span class='line'>    string(10) &quot;Praveesh A&quot;
+</span><span class='line'>    [&quot;given_name&quot;]=&gt;
+</span><span class='line'>    string(8) &quot;Praveesh&quot;
+</span><span class='line'>    [&quot;family_name&quot;]=&gt;
+</span><span class='line'>    string(1) &quot;A&quot;
+</span><span class='line'>    [&quot;locale&quot;]=&gt;
+</span><span class='line'>    string(2) &quot;en&quot;
+</span><span class='line'>    [&quot;hd&quot;]=&gt;
+</span><span class='line'>    string(19) &quot;abc.in&quot;
+</span><span class='line'>  }
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>From the variable dump, we can see that the email address can be obtained from the response by</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'> <span class="nv">$user_details</span><span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+</span><span class='line'> <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$user_details</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
+
+<ul>
+<li>Edit  loadUserByOAuthUserResponse() function as given below</li>
+</ul>
+
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">loadUserByOAuthUserResponse</span><span class="p">(</span><span class="nx">UserResponseInterface</span> <span class="nv">$response</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nv">$user_details</span><span class="o">=</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getResponse</span><span class="p">();</span>
+</span><span class='line'>    <span class="nv">$email</span> <span class="o">=</span> <span class="nv">$user_details</span><span class="p">[</span><span class="s1">&#39;email&#39;</span><span class="p">];</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">loadUserByUsername</span><span class="p">(</span><span class="nv">$email</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>3</strong>. To check whether the user exists in the database, edit loadUserByUsername($username) function as given below</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">loadUserByUsername</span><span class="p">(</span><span class="nv">$username</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="c1">//get the entity manager</span>
+</span><span class='line'>    <span class="nv">$em</span> <span class="o">=</span> <span class="nx">CMSBundle</span><span class="o">::</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;doctrine&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getEntityManager</span><span class="p">();</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1">//load the user from DB</span>
+</span><span class='line'>    <span class="nv">$entity</span> <span class="o">=</span> <span class="nv">$em</span><span class="o">-&gt;</span><span class="na">getRepository</span><span class="p">(</span><span class="s1">&#39;XYZBundle:User&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">loadUserByUsername</span><span class="p">(</span><span class="nv">$username</span><span class="p">);</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="nv">$entity</span><span class="p">){</span>
+</span><span class='line'>        <span class="c1">//if the user does not exist, then return a new OAuth user</span>
+</span><span class='line'>        <span class="nv">$user</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">OAuthUser</span><span class="p">(</span><span class="nv">$username</span><span class="p">);</span>
+</span><span class='line'>     <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+</span><span class='line'>         <span class="c1">// if the user exists, return that user</span>
+</span><span class='line'>        <span class="nv">$user</span> <span class="o">=</span> <span class="nv">$entity</span><span class="p">;</span>
+</span><span class='line'>    <span class="p">}</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$user</span><span class="p">;</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><strong>4. Then, hide or show options in the twig file according to the role of the user.</strong><br></p>
+
+<figure class='code'><figcaption><span>Twig</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'>    <span class="o">&lt;</span><span class="nx">div</span> <span class="nx">class</span><span class="o">=</span><span class="s2">&quot;well&quot;</span><span class="o">&gt;</span>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">if</span> <span class="nx">is_granted</span><span class="p">(</span><span class="s1">&#39;ROLE_USER&#39;</span><span class="p">)</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>            <span class="nx">OPTIONS</span> <span class="nx">THAT</span> <span class="k">REQUIRE</span> <span class="nx">ROLE_USER</span> <span class="nx">PRIVILEGE</span>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">else</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>            <span class="nx">PROMPT</span> <span class="nx">TO</span> <span class="nx">REGISTER</span> <span class="nx">TO</span> <span class="nx">AVAIL</span> <span class="nx">ALL</span> <span class="nx">FEATURES</span>
+</span><span class='line'>
+</span><span class='line'>        <span class="p">{</span><span class="o">%</span> <span class="k">endif</span> <span class="o">%</span><span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="o">&lt;/</span><span class="nx">div</span><span class="o">&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/01/22/symfony-2-validation-groups/">Symfony 2 Validation Groups</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-22T23:51:28+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>When more than one forms are associated with the same entity, the form validator will validate all the properties of that entity for all forms associated with that entity. This would result in form errors as all the forms may not have fields for all the properties of that entity. For example, consider a User entity with username, email address, password, name and phone number as properties. The user needs to enter all these properties when he is initially registering. When the user needs to edit his profile, there he can&rsquo;t edit username and e mail address as these two properties are non-editable. So, the form for editing the profile won&rsquo;t have fields for username and e mail. If the we are using the normal validation, when the user tries to update his profile, the form validation would fail as Symfony would validate the form for username and e mail constraints too. To prevent this, we create validation groups. By creating validation groups, we define separate set of validation constraints for different forms.<br>
+Steps:<br>
+1. When writing a validation constraint, specify the validation group against it</p>
+
+<figure class='code'><figcaption><span>Validations.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">username</span><span class="err">:                      </span>
+</span><span class='line'><span class="err">    </span><span class="l-Scalar-Plain">- NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">5</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userRegistration</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span>
+</span><span class='line'><span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userUpdate</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span><span class="err"> </span>
+</span><span class='line'><span class="l-Scalar-Plain">phoneNumber</span><span class="p-Indicator">:</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span> <span class="p-Indicator">}</span>
+</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Type</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">message</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">phone number should contain only numbers</span><span class="err"> </span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.Specify the validation group in the form class in the getDefaultOptions function</p>
+
+<figure class='code'><figcaption><span>FormType</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kr">public</span> <span class="kd">function</span> <span class="nx">setDefaultOptions</span><span class="p">(</span><span class="nx">OptionsResolverInterface</span> <span class="nx">$resolver</span><span class="p">)</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="nx">$resolver</span><span class="o">-&gt;</span><span class="nx">setDefaults</span><span class="p">(</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>        <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Venom\BlogBundle\Entity\User&#39;</span><span class="p">,</span>
+</span><span class='line'>        <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">,</span> <span class="s1">&#39;userRegistration&#39;</span><span class="p">)</span>
+</span><span class='line'>    <span class="p">));</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>3.Pass the validation group when form is created</p>
+
+<p>For the user registration action, we create the form with &lsquo;userRegistration&rsquo; validations:</p>
+
+<figure class='code'><figcaption><span>Registration Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userRegistration&#39;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For the user edit action, we create the form with &lsquo;userUpdate&rsquo; validations:</p>
+
+<figure class='code'><figcaption><span>Edit Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
+</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">)));</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>4.If the validation group is not specified when the form is created, the form will be validated for all the default validation constraints(The constraints for which a validation group is not specified)
+That is, in our case, a form created with no validation group would get validated only for the phone number field.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
+        <h1 class="entry-title"><a href="/blog/2014/01/22/setting-up-octopress/">Setting Up Octopress</a></h1>
+      
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><b>Step by step instruction<b></p>
+
+<ol>
+<li><p>clone Source branch to <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x70;&#x72;&#97;&#x76;&#x65;&#101;&#115;&#104;&#52;&#x75;&#64;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#112;&#114;&#97;&#x76;&#x65;&#x65;&#x73;&#x68;&#x34;&#117;&#64;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a></p>
+
+<pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
+</code></pre></li>
+<li><p>clone Master branch to praveesh4u@github.com/ _deploy</p>
+
+<pre><code> $ cd praveesh4u@github.com
+
+ $ git clone  git@github.com:praveesh4u/praveesh4u.github.com.git _deploy
+</code></pre></li>
+<li><p>If these steps are already done, do the following</p>
+
+<pre><code> $ cd praveesh4u@github.com  
+ $ git pull origin source
+ $ cd praveesh4u@github.com/_deploy 
+ $ git pull origin master
+</code></pre></li>
+<li><p>Next, run</p>
+
+<pre><code> $ gem install bundler
+ $ bundle install
+ $ rake setup_github_pages
+</code></pre>
+
+<p>When prompted, enter the repository&rsquo;s address-</p>
+
+<pre><code>   git@github.com:praveesh4u/praveesh4u@github.com
+</code></pre></li>
+<li><p>Configure git global parameters like username and email address using</p>
+
+<pre><code> $ git config --global user.name "Praveesh A- Linux" 
+ $ git config --global user.email "praveesh4u@gmail.com"
+</code></pre></li>
+<li>Add/Edit posts</li>
+<li><p>Generate the post</p>
+
+<pre><code> $ rake generate
+</code></pre></li>
+<li><p>Preview the generated post using</p>
+
+<pre><code> $ rake preview 
+</code></pre>
+
+<p>To view the preview, go to localhost:4000</p></li>
+<li><p>Commit the changes</p>
+
+<pre><code> $ git add .
+ $ git commit -a -m "Commit message"
+ $ git pull origin source (to sync with the server)
+ $ git push origin source
+</code></pre></li>
+<li><p>Publish the post</p>
+
+<pre><code>$ rake deploy
+</code></pre></li>
+<li>Done!!</li>
+</ol>
+
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2014/01/23/oauth-in-symfony/">OAuth in Symfony 2</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/22/symfony-2-validation-groups/">Symfony 2 Validation Groups</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2014/01/22/setting-up-octopress/">Setting Up Octopress</a>
+      </li>
+    
+  </ul>
+</section>
+
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/117425680883198293763?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2014 - praveesh4u@gmail.com -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'thestartingpoint';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
