@@ -200,7 +200,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>5.Add the resource owners in the config.yml. </strong></p>
+<p><strong>5.Add the resource owners in the config.yml. </strong>
+For this, we need to register our app in Google and Facebook and obtain the client_id and the client_secret. In addition to that, we have to provide a redirect URL while configuring the app. The response after authenticating the user by the service providers is sent to this URL.</p>
+
+<p>For Google, this redirect URL is www.yourdomain.com/login/check-google. This address should be provide against the field labelled &lsquo;Redirect URIs&rsquo;. Please see the screenshot below.
+<img src="https://lh3.googleusercontent.com/-ACpfWT-Hhh8/Uu9TJuMEndI/AAAAAAAAAGQ/rFFX0D7Ihy4/w757-h267-no/Oauth-Google.png" title="google api" alt="google api" /></p>
+
+<p>For Facebook, once you register the app, click on &lsquo;Add platform&rsquo; button and register your app as a web app. The redirect URL for Facebook is www.yourdomain.com/login/check-facebook. Enter this URL in &lsquo;Site URL&rsquo; field and &lsquo;Mobile Site URL &rsquo; field under &lsquo;Website&rsquo;. Please see the screenshot below.
+<img src="https://lh3.googleusercontent.com/-RxAO32PdrKs/Uu9TJQkx4nI/AAAAAAAAAGM/VZvTG4DpoZ4/w719-h577-no/Oauth-FB.png" title="facebook api" alt="facebook api" /></p>
+
+<p>Then, provide the client_id and client_secret for Facebook and Google in the config.yml file</p>
 
 <figure class='code'><figcaption><span>config.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

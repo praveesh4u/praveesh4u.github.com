@@ -203,7 +203,16 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><strong>5.Add the resource owners in the config.yml. </strong></p>
+<p><strong>5.Add the resource owners in the config.yml. </strong>
+For this, we need to register our app in Google and Facebook and obtain the client_id and the client_secret. In addition to that, we have to provide a redirect URL while configuring the app. The response after authenticating the user by the service providers is sent to this URL.</p>
+
+<p>For Google, this redirect URL is www.yourdomain.com/login/check-google. This address should be provide against the field labelled &lsquo;Redirect URIs&rsquo;. Please see the screenshot below.
+<img src="https://lh3.googleusercontent.com/-ACpfWT-Hhh8/Uu9TJuMEndI/AAAAAAAAAGQ/rFFX0D7Ihy4/w757-h267-no/Oauth-Google.png" title="google api" alt="google api" /></p>
+
+<p>For Facebook, once you register the app, click on &lsquo;Add platform&rsquo; button and register your app as a web app. The redirect URL for Facebook is www.yourdomain.com/login/check-facebook. Enter this URL in &lsquo;Site URL&rsquo; field and &lsquo;Mobile Site URL &rsquo; field under &lsquo;Website&rsquo;. Please see the screenshot below.
+<img src="https://lh3.googleusercontent.com/-RxAO32PdrKs/Uu9TJQkx4nI/AAAAAAAAAGM/VZvTG4DpoZ4/w719-h577-no/Oauth-FB.png" title="facebook api" alt="facebook api" /></p>
+
+<p>Then, provide the client_id and client_secret for Facebook and Google in the config.yml file</p>
 
 <figure class='code'><figcaption><span>config.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -805,7 +814,7 @@ That is, in our case, a form created with no validation group would get validate
   <div class="entry-content"><p><b>Step by step instruction<b></p>
 
 <ol>
-<li><p>clone Source branch to <a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x70;&#x72;&#97;&#x76;&#x65;&#101;&#115;&#104;&#52;&#x75;&#64;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#111;&#109;">&#112;&#114;&#97;&#x76;&#x65;&#x65;&#x73;&#x68;&#x34;&#117;&#64;&#103;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#111;&#x6d;</a></p>
+<li><p>clone Source branch to <a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x70;&#114;&#x61;&#118;&#101;&#x65;&#x73;&#104;&#52;&#x75;&#x40;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;">&#112;&#x72;&#97;&#118;&#101;&#101;&#x73;&#x68;&#52;&#117;&#x40;&#103;&#x69;&#x74;&#x68;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;</a></p>
 
 <pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
 </code></pre></li>
