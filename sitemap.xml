@@ -2,26 +2,30 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/</loc>
-        <lastmod>2014-01-23T10:37:47+05:30</lastmod>
+        <lastmod>2015-03-31T23:04:19+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/</loc>
-        <lastmod>2014-01-23T10:37:47+05:30</lastmod>
+        <lastmod>2015-03-31T23:04:19+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/23/oauth-in-symfony/</loc>
-        <lastmod>2014-02-03T14:26:58+05:30</lastmod>
+        <lastmod>2015-03-31T23:04:19+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4u.github.io/</loc>
-        <lastmod>2014-02-03T14:26:58+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://praveesh4u.github.io/blog/archives/</loc>
-        <lastmod>2014-02-03T14:26:58+05:30</lastmod>
+        <loc>http://praveesh4u.github.io/blog/2015/03/31/i-hate-codeigniter/</loc>
+        <lastmod>2015-03-31T23:30:23+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/robots.txt</loc>
-        <lastmod>2014-01-23T10:37:47+05:30</lastmod>
+        <lastmod>2015-03-31T23:04:19+05:30</lastmod>
+    </url>
+    <url>
+        <loc>http://praveesh4u.github.io/blog/archives/</loc>
+        <lastmod>2015-03-31T23:30:23+05:30</lastmod>
+    </url>
+    <url>
+        <loc>http://praveesh4u.github.io/</loc>
+        <lastmod>2015-03-31T23:30:23+05:30</lastmod>
     </url>
 </urlset>
