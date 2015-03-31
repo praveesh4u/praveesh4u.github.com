@@ -4,7 +4,7 @@
   <title><![CDATA[The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2015-03-31T23:33:51+05:30</updated>
+  <updated>2015-03-31T23:50:34+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -18,7 +18,7 @@
     <link href="http://praveesh4u.github.io/blog/2015/03/31/i-hate-codeigniter/"/>
     <updated>2015-03-31T23:20:26+05:30</updated>
     <id>http://praveesh4u.github.io/blog/2015/03/31/i-hate-codeigniter</id>
-    <content type="html"><![CDATA[<p>After coding in Symfony for a good two years, I had to switch to CodeIgniter due to job switching. I have to say that CodeIgniter is a really ancient PHP framework when compared with Symfony. People say code igniter is a light weight framework, it has small footprint and etc. Seriously, who gives a damn?</p>
+    <content type="html"><![CDATA[<p>After coding in Symfony for a long two years, I had to switch to CodeIgniter due to job switching. I have to say that CodeIgniter is a really ancient PHP framework when compared with Symfony. People say code igniter is a light weight framework, it has small footprint and etc. Seriously, who gives a damn? As long as there is option for vertical scaling, who cares about the memory foot print of the framework?</p>
 ]]></content>
   </entry>
   
@@ -669,7 +669,7 @@ That is, in our case, a form created with no validation group would get validate
     <content type="html"><![CDATA[<p><b>Step by step instruction<b></p>
 
 <ol>
-<li><p>clone Source branch to <a href="&#x6d;&#97;&#105;&#108;&#116;&#x6f;&#x3a;&#112;&#x72;&#x61;&#x76;&#101;&#101;&#115;&#x68;&#52;&#117;&#64;&#x67;&#x69;&#x74;&#104;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x70;&#114;&#x61;&#x76;&#101;&#x65;&#x73;&#x68;&#x34;&#117;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#98;&#46;&#x63;&#x6f;&#109;</a></p>
+<li><p>clone Source branch to <a href="&#x6d;&#97;&#105;&#x6c;&#x74;&#111;&#58;&#112;&#x72;&#x61;&#118;&#x65;&#x65;&#115;&#x68;&#52;&#117;&#64;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#109;">&#112;&#114;&#97;&#x76;&#101;&#x65;&#115;&#x68;&#x34;&#117;&#x40;&#103;&#x69;&#116;&#104;&#x75;&#98;&#x2e;&#x63;&#111;&#109;</a></p>
 
 <pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
 </code></pre></li>
