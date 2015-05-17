@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Laravel 5 | The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/blog/categories/laravel-5/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2015-05-17T06:14:04+05:30</updated>
+  <updated>2015-05-17T18:21:35+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -22,7 +22,7 @@
 
 <p>The problem scenario in my case: I have a client entity which have one to many relation with a client user entity. That is, one client can have more than one client users. The form for adding a client should embed the form for adding the associated client users too. By default when the form loads, it should have form for adding one user. There should be a button for populating more client user forms in case a client has more than one form. Yeah, you guessed it right, we have to use Javascript.</p>
 
-<p><img src="https://lh3.googleusercontent.com/YRku4651uAsz5VDDCrWtEtIK16iEB1nmAMU-bzS3UsQo0Q90uUE-NDFKJ8LqJDZTRCdquQuuZV7sD6M=w1896-h875-rw" title="Final form" alt="This is how the final form should look like" /></p>
+<p><img src="https://www.googledrive.com/host/0B79rmAsCK2UJNGEzb2k0SjloMGs" title="Final form" alt="This is how the final form should look like" /></p>
 ]]></content>
   </entry>
   
