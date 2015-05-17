@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: http://praveesh4.github.io/sitemap.xml 
+Sitemap: http://praveesh4u.github.io/sitemap.xml 

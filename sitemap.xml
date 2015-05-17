@@ -1,37 +1,37 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
-        <loc>http://praveesh4.github.io/blog/2014/01/22/setting-up-octopress/</loc>
+        <loc>http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/</loc>
         <lastmod>2015-04-01T17:52:02+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/blog/2014/01/22/symfony-2-validation-groups/</loc>
+        <loc>http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/</loc>
         <lastmod>2015-04-01T17:52:02+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/</loc>
+        <loc>http://praveesh4u.github.io/blog/2014/01/23/oauth-in-symfony/</loc>
         <lastmod>2015-04-01T17:52:02+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/blog/2015/03/31/i-hate-codeigniter/</loc>
+        <loc>http://praveesh4u.github.io/blog/2015/03/31/i-hate-codeigniter/</loc>
         <lastmod>2015-04-01T17:52:02+05:30</lastmod>
     </url>
     <url>
         <loc>
-            http://praveesh4.github.io/blog/2015/05/16/embedding-related-forms-in-laravel-5/
+            http://praveesh4u.github.io/blog/2015/05/16/embedding-related-forms-in-laravel-5/
         </loc>
         <lastmod>2015-05-16T22:28:07+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/</loc>
+        <loc>http://praveesh4u.github.io/</loc>
         <lastmod>2015-05-16T22:28:07+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/blog/archives/</loc>
+        <loc>http://praveesh4u.github.io/blog/archives/</loc>
         <lastmod>2015-05-16T22:28:07+05:30</lastmod>
     </url>
     <url>
-        <loc>http://praveesh4.github.io/robots.txt</loc>
+        <loc>http://praveesh4u.github.io/robots.txt</loc>
         <lastmod>2015-04-01T17:52:02+05:30</lastmod>
     </url>
 </urlset>
