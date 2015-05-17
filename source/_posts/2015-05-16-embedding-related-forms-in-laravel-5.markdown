@@ -11,4 +11,4 @@ Sometimes, there arises the need for embedding forms for creating more than one 
 
 The problem scenario in my case: I have a client entity which have one to many relation with a client user entity. That is, one client can have more than one client users. The form for adding a client should embed the form for adding the associated client users too. By default when the form loads, it should have form for adding one user. There should be a button for populating more client user forms in case a client has more than one form. Yeah, you guessed it right, we have to use Javascript.
 
-![This is how the final form should look like](https://lh3.googleusercontent.com/YRku4651uAsz5VDDCrWtEtIK16iEB1nmAMU-bzS3UsQo0Q90uUE-NDFKJ8LqJDZTRCdquQuuZV7sD6M=w1896-h875-rw "Final form")
+![This is how the final form should look like](https://www.googledrive.com/host/0B79rmAsCK2UJNGEzb2k0SjloMGs "Final form")
