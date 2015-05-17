@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://praveesh4.github.io/sitemap.xml 

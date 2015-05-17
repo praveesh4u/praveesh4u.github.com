@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The Starting Point</title>
+  <title>OAuth in Symfony 2 - The Starting Point</title>
   <meta name="author" content="praveesh4u@gmail.com">
 
   
-  <meta name="description" content="Sometimes, there arises the need for embedding forms for creating more than one type of entities in a single form. Most of the time the two entities &hellip;">
+  <meta name="description" content="Setting up HWIOAuth Bundle 1. Add the HWI OAuth bundle to the project Download the OAuthBundle from the official git repository and copy the contents &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://praveesh4.github.io/">
+  <link rel="canonical" href="http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -81,96 +81,13 @@
 </nav>
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2015/05/16/embedding-related-forms-in-laravel-5/">Embedding Related Forms in Laravel 5</a></h1>
       
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-05-16T20:43:52+05:30" pubdate data-updated="true">May 16<span>th</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Sometimes, there arises the need for embedding forms for creating more than one type of entities in a single form. Most of the time the two entities have a parent-child relation and to make things more complicated, dynamic addition and deletion of the child entity form will also be a part of the requirement. Symfony has functionality for implementing such forms built in within the framework which saves a lot of typing and time. Although Laravel 5&rsquo;s form implementation is relatively flexible compared to Symfony, there is no out of the box solution for embedding forms. After Googling for a decent amount of time and a Stackoverflow question that earned me a &ldquo;<a href="http://stackoverflow.com/help/badges/63/tumbleweed">Tumbleweed</a>&rdquo; badge, I decided to get my hands dirty. This may not be the most elegant solution but I can assure you that this works. I have tried to take advantage of cool laravel features like HTML macros so that the solution is more Laravel-ish.</p>
-
-<p>The problem scenario in my case: I have a client entity which have one to many relation with a client user entity. That is, one client can have more than one client users. The form for adding a client should embed the form for adding the associated client users too. By default when the form loads, it should have form for adding one user. There should be a button for populating more client user forms in case a client has more than one form. Yeah, you guessed it right, we have to use Javascript.</p>
-
-<p><img src="https://lh3.googleusercontent.com/YRku4651uAsz5VDDCrWtEtIK16iEB1nmAMU-bzS3UsQo0Q90uUE-NDFKJ8LqJDZTRCdquQuuZV7sD6M=w1896-h875-rw" title="Final form" alt="This is how the final form should look like" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2015/03/31/i-hate-codeigniter/">I Hate CodeIgniter</a></h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2015-03-31T23:20:26+05:30" pubdate data-updated="true">Mar 31<span>st</span>, 2015</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After coding in Symfony for a long two years, I had to switch to CodeIgniter due to job switching. I have to say that CodeIgniter is a really ancient PHP framework when compared with Symfony. People say code igniter is a light weight framework, it has small footprint and etc. Seriously, who gives a damn? As long as there is option for vertical scaling, who cares about the memory foot print of the framework?</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/23/oauth-in-symfony/">OAuth in Symfony 2</a></h1>
+        <h1 class="entry-title">OAuth in Symfony 2</h1>
       
     
     
@@ -194,7 +111,7 @@
   </header>
 
 
-  <div class="entry-content"><h1>Setting up HWIOAuth Bundle</h1>
+<div class="entry-content"><h1>Setting up HWIOAuth Bundle</h1>
 
 <p><strong>1. Add the HWI OAuth bundle to the project</strong></p>
 
@@ -748,24 +665,16 @@ and modify the getRoles() function to return only ROLE_OAUTH_USER as role.</p>
 </span></code></pre></td></tr></table></div></figure>
 
 </div>
-  
-  
 
 
-    </article>
-  
-  
-    <article>
+  <footer>
+    <p class="meta">
       
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/22/symfony-2-validation-groups/">Symfony 2 Validation Groups</a></h1>
+  
+
+<span class="byline author vcard">Posted by <span class="fn">praveesh4u@gmail.com</span></span>
+
       
-    
-    
-      <p class="meta">
-        
 
 
 
@@ -777,194 +686,40 @@ and modify the getRoles() function to return only ROLE_OAUTH_USER as role.</p>
   
 
 
-<time datetime="2014-01-22T23:51:28+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
-        
-      </p>
+<time datetime="2014-01-23T00:33:00+05:30" pubdate data-updated="true">Jan 23<span>rd</span>, 2014</time>
+      
+
+
+    </p>
     
-  </header>
-
-
-  <div class="entry-content"><p>When more than one forms are associated with the same entity, the form validator will validate all the properties of that entity for all forms associated with that entity. This would result in form errors as all the forms may not have fields for all the properties of that entity. For example, consider a User entity with username, email address, password, name and phone number as properties. The user needs to enter all these properties when he is initially registering. When the user needs to edit his profile, there he can&rsquo;t edit username and e mail address as these two properties are non-editable. So, the form for editing the profile won&rsquo;t have fields for username and e mail. If the we are using the normal validation, when the user tries to update his profile, the form validation would fail as Symfony would validate the form for username and e mail constraints too. To prevent this, we create validation groups. By creating validation groups, we define separate set of validation constraints for different forms.<br>
-Steps:<br>
-1. When writing a validation constraint, specify the validation group against it</p>
-
-<figure class='code'><figcaption><span>Validations.yml </span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-</pre></td><td class='code'><pre><code class='yaml'><span class='line'><span class="l-Scalar-Plain">username</span><span class="err">:                      </span>
-</span><span class='line'><span class="err">    </span><span class="l-Scalar-Plain">- NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">5</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userRegistration</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span><span class="p-Indicator">,</span> <span class="nv">groups</span><span class="p-Indicator">:</span> <span class="p-Indicator">[</span> <span class="nv">userUpdate</span><span class="p-Indicator">]</span> <span class="p-Indicator">}</span><span class="err"> </span>
-</span><span class='line'><span class="l-Scalar-Plain">phoneNumber</span><span class="p-Indicator">:</span>
-</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">NotBlank</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">~</span>
-</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">MinLength</span><span class="p-Indicator">:</span> <span class="p-Indicator">{</span> <span class="nv">limit</span><span class="p-Indicator">:</span> <span class="nv">10</span> <span class="p-Indicator">}</span>
-</span><span class='line'><span class="err">    </span><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">Type</span>
-</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
-</span><span class='line'><span class="err">        </span><span class="l-Scalar-Plain">message</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">phone number should contain only numbers</span><span class="err"> </span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>2.Specify the validation group in the form class in the getDefaultOptions function</p>
-
-<figure class='code'><figcaption><span>FormType</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="kr">public</span> <span class="kd">function</span> <span class="nx">setDefaultOptions</span><span class="p">(</span><span class="nx">OptionsResolverInterface</span> <span class="nx">$resolver</span><span class="p">)</span>
-</span><span class='line'><span class="p">{</span>
-</span><span class='line'>    <span class="nx">$resolver</span><span class="o">-&gt;</span><span class="nx">setDefaults</span><span class="p">(</span><span class="nx">array</span><span class="p">(</span>
-</span><span class='line'>        <span class="s1">&#39;data_class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Venom\BlogBundle\Entity\User&#39;</span><span class="p">,</span>
-</span><span class='line'>        <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">,</span> <span class="s1">&#39;userRegistration&#39;</span><span class="p">)</span>
-</span><span class='line'>    <span class="p">));</span>
-</span><span class='line'><span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>3.Pass the validation group when form is created</p>
-
-<p>For the user registration action, we create the form with &lsquo;userRegistration&rsquo; validations:</p>
-
-<figure class='code'><figcaption><span>Registration Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
-</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userRegistration&#39;</span><span class="p">)));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>For the user edit action, we create the form with &lsquo;userUpdate&rsquo; validations:</p>
-
-<figure class='code'><figcaption><span>Edit Action</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$form</span> <span class="o">=</span> <span class="nx">$this</span><span class="o">-&gt;</span><span class="nx">createForm</span><span class="p">(</span><span class="k">new</span> <span class="nx">UserType</span><span class="p">(),</span> <span class="nx">$entity</span><span class="p">,</span><span class="nx">array</span><span class="p">(</span>
-</span><span class='line'>                            <span class="s1">&#39;validation_groups&#39;</span> <span class="o">=&gt;</span> <span class="nx">array</span><span class="p">(</span><span class="s1">&#39;userUpdate&#39;</span><span class="p">)));</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>4.If the validation group is not specified when the form is created, the form will be validated for all the default validation constraints(The constraints for which a validation group is not specified)
-That is, in our case, a form created with no validation group would get validated only for the phone number field.</p>
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/" data-via="@praveesh4u" data-counturl="http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/" >Tweet</a>
+  
+  
+  
 </div>
-  
-  
 
-
-    </article>
-  
-  
-    <article>
+    
+    <p class="meta">
       
-  <header>
-    
-      <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2014/01/22/setting-up-octopress/">Setting Up Octopress</a></h1>
+        <a class="basic-alignment left articlenav" href="/blog/2014/01/22/symfony-2-validation-groups/" title="Previous Post: Symfony 2 Validation groups">&laquo; Symfony 2 Validation groups</a>
       
-    
-    
-      <p class="meta">
-        
+      
+        <a class="basic-alignment right articlenav" href="/blog/2015/03/31/i-hate-codeigniter/" title="Next Post: I Hate CodeIgniter">I Hate CodeIgniter &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
 
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p><b>Step by step instruction<b></p>
-
-<ol>
-<li><p>clone Source branch to <a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#x3a;&#112;&#x72;&#97;&#118;&#101;&#101;&#115;&#104;&#52;&#x75;&#x40;&#x67;&#105;&#116;&#104;&#117;&#x62;&#46;&#99;&#111;&#x6d;">&#x70;&#x72;&#97;&#x76;&#x65;&#101;&#x73;&#x68;&#x34;&#117;&#x40;&#103;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#x6f;&#109;</a></p>
-
-<pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
-</code></pre></li>
-<li><p>clone Master branch to praveesh4u@github.com/ _deploy</p>
-
-<pre><code> $ cd praveesh4u@github.com
-
- $ git clone  git@github.com:praveesh4u/praveesh4u.github.com.git _deploy
-</code></pre></li>
-<li><p>If these steps are already done, do the following</p>
-
-<pre><code> $ cd praveesh4u@github.com  
- $ git pull origin source
- $ cd praveesh4u@github.com/_deploy 
- $ git pull origin master
-</code></pre></li>
-<li><p>Next, run</p>
-
-<pre><code> $ gem install bundler
- $ bundle install
- $ rake setup_github_pages
-</code></pre>
-
-<p>When prompted, enter the repository&rsquo;s address-</p>
-
-<pre><code>   git@github.com:praveesh4u/praveesh4u@github.com
-</code></pre></li>
-<li><p>Configure git global parameters like username and email address using</p>
-
-<pre><code> $ git config --global user.name "Praveesh A- Linux" 
- $ git config --global user.email "praveesh4u@gmail.com"
-</code></pre></li>
-<li>Add/Edit posts</li>
-<li><p>Generate the post</p>
-
-<pre><code> $ rake generate
-</code></pre></li>
-<li><p>Preview the generated post using</p>
-
-<pre><code> $ rake preview 
-</code></pre>
-
-<p>To view the preview, go to localhost:4000</p></li>
-<li><p>Commit the changes</p>
-
-<pre><code> $ git add .
- $ git commit -a -m "Commit message"
- $ git pull origin source (to sync with the server)
- $ git push origin source
-</code></pre></li>
-<li><p>Publish the post</p>
-
-<pre><code>$ rake deploy
-</code></pre></li>
-<li>Done!!</li>
-</ol>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
 
 </div>
-  
-  
 
-
-    </article>
-  
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
-</div>
 <aside class="sidebar">
   
     <section>
@@ -1010,6 +765,7 @@ That is, in our case, a form created with no validation group would get validate
   
 </aside>
 
+
     </div>
   </div>
   <footer role="contentinfo"><p>
@@ -1024,7 +780,10 @@ That is, in our case, a form created with no validation group would get validate
       var disqus_shortname = 'thestartingpoint';
       
         
-        var disqus_script = 'count.js';
+        // var disqus_developer = 1;
+        var disqus_identifier = 'http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/';
+        var disqus_url = 'http://praveesh4.github.io/blog/2014/01/23/oauth-in-symfony/';
+        var disqus_script = 'embed.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
