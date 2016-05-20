@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setting Up Octopress - The Starting Point</title>
+  <title>Category: Linux - The Starting Point</title>
   <meta name="author" content="praveesh4u@gmail.com">
 
   
-  <meta name="description" content="Step by step instruction clone Source branch to &#112;&#114;&#97;&#118;&#101;&#101;&#115;&#x68;&#52;&#117;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62 &hellip;">
+  <meta name="description" content="Category: Linux">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/">
+  <link rel="canonical" href="http://praveesh4u.github.ioblog/categories/linux/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -82,147 +82,36 @@
   <div id="main">
     <div id="content">
       <div>
-<article class="hentry" role="article">
+<article role="article">
   
   <header>
-    
-      
-        <h1 class="entry-title">Setting Up Octopress</h1>
-      
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
-        
-      </p>
+    <h1 class="entry-title">Category: Linux</h1>
     
   </header>
-
-
-<div class="entry-content"><p><b>Step by step instruction<b></p>
-
-<ol>
-<li><p>clone Source branch to <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#112;&#114;&#x61;&#118;&#101;&#101;&#115;&#x68;&#52;&#x75;&#64;&#x67;&#105;&#116;&#104;&#117;&#98;&#x2e;&#x63;&#x6f;&#109;">&#112;&#114;&#97;&#118;&#101;&#101;&#115;&#x68;&#52;&#117;&#x40;&#103;&#x69;&#x74;&#104;&#117;&#x62;&#x2e;&#99;&#111;&#109;</a></p>
-
-<pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
-</code></pre></li>
-<li><p>clone Master branch to praveesh4u@github.com/ _deploy</p>
-
-<pre><code> $ cd praveesh4u@github.com
-
- $ git clone  git@github.com:praveesh4u/praveesh4u.github.com.git _deploy
-</code></pre></li>
-<li><p>If these steps are already done, do the following</p>
-
-<pre><code> $ cd praveesh4u@github.com  
- $ git pull origin source
- $ cd praveesh4u@github.com/_deploy 
- $ git pull origin master
-</code></pre></li>
-<li><p>Next, run</p>
-
-<pre><code> $ gem install bundler
- $ bundle install
- $ rake setup_github_pages
-</code></pre>
-
-<p>When prompted, enter the repository&rsquo;s address-</p>
-
-<pre><code>   git@github.com:praveesh4u/praveesh4u@github.com
-</code></pre></li>
-<li><p>Configure git global parameters like username and email address using</p>
-
-<pre><code> $ git config --global user.name "Praveesh A- Linux" 
- $ git config --global user.email "praveesh4u@gmail.com"
-</code></pre></li>
-<li>Add/Edit posts</li>
-<li><p>Generate the post</p>
-
-<pre><code> $ rake generate
-</code></pre></li>
-<li><p>Preview the generated post using</p>
-
-<pre><code> $ rake preview 
-</code></pre>
-
-<p>To view the preview, go to localhost:4000</p></li>
-<li><p>Commit the changes</p>
-
-<pre><code> $ git add .
- $ git commit -a -m "Commit message"
- $ git pull origin source (to sync with the server)
- $ git push origin source
-</code></pre></li>
-<li><p>Publish the post</p>
-
-<pre><code>$ rake deploy
-</code></pre></li>
-<li>Done!!</li>
-</ol>
-
-</div>
-
-
-  <footer>
-    <p class="meta">
-      
   
-
-<span class="byline author vcard">Posted by <span class="fn">praveesh4u@gmail.com</span></span>
-
-      
-
-
-
-
-
+  <div id="blog-archives" class="category">
 
 
 
   
+  <h2>2016</h2>
 
-
-<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
-      
-
-
-    </p>
-    
-      <div class="sharing">
+<article>
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/" data-via="@praveesh4u" data-counturl="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/" >Tweet</a>
-  
-  
-  
-</div>
+<h1><a href="/blog/2016/05/20/the-screen-command-in-linux/">The Screen command in Linux</a></h1>
+<time datetime="2016-05-20T15:44:40+05:30" pubdate><span class='month'>May</span> <span class='day'>20</span> <span class='year'>2016</span></time>
 
-    
-    <p class="meta">
-      
-      
-        <a class="basic-alignment right articlenav" href="/blog/2014/01/22/symfony-2-validation-groups/" title="Next Post: Symfony 2 Validation groups">Symfony 2 Validation groups &raquo;</a>
-      
-    </p>
-  </footer>
+<footer>
+  <span class="categories">posted in <a class='category' href='/blog/categories/devops/'>DevOps</a>, <a class='category' href='/blog/categories/linux/'>Linux</a></span>
+</footer>
+
+
 </article>
 
-  <section>
-    <h1>Comments</h1>
-    <div id="disqus_thread" aria-live="polite"><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </div>
-  </section>
+
+  
+</article>
 
 </div>
 
@@ -282,10 +171,7 @@
       var disqus_shortname = 'thestartingpoint';
       
         
-        // var disqus_developer = 1;
-        var disqus_identifier = 'http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/';
-        var disqus_url = 'http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/';
-        var disqus_script = 'embed.js';
+        var disqus_script = 'count.js';
       
     (function () {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

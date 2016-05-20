@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Linux | The Starting Point]]></title>
+  <link href="http://praveesh4u.github.io/blog/categories/linux/atom.xml" rel="self"/>
+  <link href="http://praveesh4u.github.io/"/>
+  <updated>2016-05-20T15:59:53+05:30</updated>
+  <id>http://praveesh4u.github.io/</id>
+  <author>
+    <name><![CDATA[praveesh4u@gmail.com]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The Screen command in Linux]]></title>
+    <link href="http://praveesh4u.github.io/blog/2016/05/20/the-screen-command-in-linux/"/>
+    <updated>2016-05-20T15:44:40+05:30</updated>
+    <id>http://praveesh4u.github.io/blog/2016/05/20/the-screen-command-in-linux</id>
+    <content type="html"><![CDATA[<p>I have recently shifted my focus to DevOps and I spent a lot of time SSHing to remote servers and doing things in the &lsquo;terminal&rsquo; way. One thing that I missed during my SSH sessions was the lack of a multi-window system. You have access to the server via a single terminal and you have to execute all the commands in that terminal. That is what I thought initially. So running two or more tasks at the same time and keep them running even if I terminate the SSH session was a problem. With a little research, I was able to find a few solutions such as running the processes using nohup, using &amp;  and then playing with fg and bg, demonizing the process etc. However, all these lacked the simplicity and ease of using a multi-window system. Googling further, I was able to get the solution for all the concerns that I had with the previously mentioned methods &ndash; the Screen command.</p>
+
+<h2>What is Screen?</h2>
+
+<p>As per the GNU documentation for Screen, <em>&ldquo;Screen is a full-screen window manager that multiplexes a physical terminal between several processes, typically interactive shells&rdquo;</em>. In layman&rsquo;s terms, Screen allows the usage of multiple terminals from within a terminal. That is, you can spawn multiple terminals and switch between those terminals using a single SSH terminal. More or less this is like having multiple tabs in a single terminal window and running different tasks in those tabs. Each terminal may be called a screen and these screens keep running until they are killed explicitly. That is, even if you terminate the ssh session to the server, the screens will not get terminated.</p>
+
+<h2>How to use the screen command?</h2>
+
+<ul>
+<li>Starting a new screen and assigning a name to it
+<code>screen -S s1</code>
+This command will create a new screen named s1 and open that screen in the existing terminal. From here, you may execute the desired task. To return to the terminal from where you have started the new screen, press <code>Ctrl+a d</code>. This command detaches the screen and returns to the main terminal. Please note that for commands that are related to the screen, you have to press <code>Ctrl+a</code> before entering the command. Now, let&rsquo;s start one more screen named s2 using <code>screen -s s2</code>  command. After that, Detach from s2 to the main terminal using <code>Ctrl+a d</code>.</li>
+<li>Listing screens
+Now, you have two screens running in the background. To list the screens that are running in background, <code>screen -ls</code> command is used.</li>
+</ul>
+
+
+<p> <img src="https://lh3.googleusercontent.com/m8AEtH74TiNQxNvTPcj_al20Izli6h-dcTZC0mF3C1y1VXUy4u357iPCA08vVrbo6oBnv-3_RwwcmyEaaN8YHIDm_VIGvx5jN0O9o3CQaMnN2ev1y21ofl7TD1KN0RSuikMMNqv3NSaOoUdxOucDpi-d9aso9fQGL853C4zPuevaAsQ-ejyyNtHBFCkOfS6i10FZojD1ioe5wvqcmzkiAEkvAPkD3HC9vPSJiboHeI-MJIcMOccvx9hsGfpvnzsB0XqimM4JyhpJhHMHDFB8RjFxvXDqHoBAoNyYVnbalOfkV6btkNnqYEDuXBh4yFiz1bCnV3k8vKib4V4BB9CcQ3wCvUOtE1oe9qDfGJfRQpVl9xyJ7FnBNQxCikD5ExhZtRl0Nd35WcFZgr1Ujf9b8bCvjh8J2wA8pmZwGYsgxnxkqPcpLpUmFUqHew28B7ntP05jWoQd1wU9xqvmdwV99cWV2YmivFUgkBDGL-Q82B7PAijFNhNmHrSCyMSoo-idBPbApT-K9vXvZ0UgrnGsJ2dosPIRRwXosapH9YgWkrWPdJcW1vUfF-4vtbpQoPSByQEGLq-FpBl-Wuqf-9VeA0Z3YC7tL0Pi=w689-h114-no" title="Screen" alt="Screen List " /></p>
+
+<ul>
+<li><p>Switching between screens
+To switch to any of these screens, <code>screen -r SCREENNAME</code> command is used. If you want to switch to s1, then use <code>screen -r  s1</code>. To switch to s2 from s1, first detach from s1 using <code>Ctrl+a d</code>, then resume s2 using <code>screen -r s2</code></p></li>
+<li><p>Terminating a screen
+To terminate/kill a screen, resume that screen and then enter <code>Ctrl+a k</code>. You will get a confirmation before killing the screen.
+<img src="https://lh3.googleusercontent.com/aYusDu27M72tacZkTQn0r4RUOzD34g6k6MX5E5qa-Sef1ENsuWvCmLeIGmMIxJKnC-MeEXULvH18awOYCZC0Alc614WkGpArvqg7uU4IpNYkxRQq7uf6Lpq8kEqjQnW8_GWsgzo7b4oyHRNUQRTDqdZ2APDU8hwXYjA-a1vgmiZDEAlVM32aKLfk9LuJC-gJJOaD6aNv1IZtFU4WexoAJUznzaHBXdpCPxvmGl3odJJDZhFDczKPpnvL8Ic4zLExKGMiGbNtF757dn3rR67coQX1RUbUVM65Az1VXDBRsGJkMlAvY3ZCYNAq_YHzzTsY08UeHyx8tMKByr0ho9Hy6KS_ib4Xe3lH9mbM06e3o9ZgNypbgqNyjKroxgM56EfIHYinqXYPDo8yPCXJe8OQcmKdulh_xgWMX5qDk3e5DcL85tLlzttpmrH8xS9UfeIuI8xil-vse8lwlDf_SS12y9lf4LluHhtRtlZkeZEd6pFDgsKzPpJrqx6rBAOs-wpX1UjBca83l6SFg2vbaES6U05vGiGKNwgOFBl59DzHZw9vfEUb5SEEWhzWX4y8PoXndB1VZ1U9vKGzfiuIzBFSET9mxTDLnVJP=w383-h177-no" title="Terminate-confirm" alt="Kill Screen" /></p></li>
+</ul>
+
+
+<p>These are the basic operations using the screen command. A detailed list of screen commands is available at the official manual <a href="https://www.gnu.org/software/screen/manual/screen.html">Link</a></p>
+]]></content>
+  </entry>
+  
+</feed>
