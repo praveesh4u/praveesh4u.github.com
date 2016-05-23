@@ -25,7 +25,7 @@ This command will create a new screen named s1 and open that screen in the exist
  To switch to any of these screens, `screen -r SCREENNAME` command is used. If you want to switch to s1, then use `screen -r  s1`. To switch to s2 from s1, first detach from s1 using `Ctrl+a d`, then resume s2 using `screen -r s2`
 
 * Terminating a screen  
-To terminate/kill a screen, resume that screen and then enter `Ctrl+a k`. You will get a confirmation before killing the screen.
+To terminate/kill a screen, resume that screen and then enter `Ctrl+a k`. You will get a confirmation before killing the screen.  
 ![Kill Screen](https://lh3.googleusercontent.com/aYusDu27M72tacZkTQn0r4RUOzD34g6k6MX5E5qa-Sef1ENsuWvCmLeIGmMIxJKnC-MeEXULvH18awOYCZC0Alc614WkGpArvqg7uU4IpNYkxRQq7uf6Lpq8kEqjQnW8_GWsgzo7b4oyHRNUQRTDqdZ2APDU8hwXYjA-a1vgmiZDEAlVM32aKLfk9LuJC-gJJOaD6aNv1IZtFU4WexoAJUznzaHBXdpCPxvmGl3odJJDZhFDczKPpnvL8Ic4zLExKGMiGbNtF757dn3rR67coQX1RUbUVM65Az1VXDBRsGJkMlAvY3ZCYNAq_YHzzTsY08UeHyx8tMKByr0ho9Hy6KS_ib4Xe3lH9mbM06e3o9ZgNypbgqNyjKroxgM56EfIHYinqXYPDo8yPCXJe8OQcmKdulh_xgWMX5qDk3e5DcL85tLlzttpmrH8xS9UfeIuI8xil-vse8lwlDf_SS12y9lf4LluHhtRtlZkeZEd6pFDgsKzPpJrqx6rBAOs-wpX1UjBca83l6SFg2vbaES6U05vGiGKNwgOFBl59DzHZw9vfEUb5SEEWhzWX4y8PoXndB1VZ1U9vKGzfiuIzBFSET9mxTDLnVJP=w383-h177-no "Terminate-confirm")
 
 These are the basic operations using the screen command. A detailed list of screen commands is available at the official manual [Link](https://www.gnu.org/software/screen/manual/screen.html)
