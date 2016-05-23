@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Linux | The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/blog/categories/linux/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2016-05-20T23:02:17+05:30</updated>
+  <updated>2016-05-23T09:40:33+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -41,7 +41,7 @@ Now, you have two screens running in the background. To list the screens that ar
 <li><p>Switching between screens<br/>
 To switch to any of these screens, <code>screen -r SCREENNAME</code> command is used. If you want to switch to s1, then use <code>screen -r  s1</code>. To switch to s2 from s1, first detach from s1 using <code>Ctrl+a d</code>, then resume s2 using <code>screen -r s2</code></p></li>
 <li><p>Terminating a screen<br/>
-To terminate/kill a screen, resume that screen and then enter <code>Ctrl+a k</code>. You will get a confirmation before killing the screen.
+To terminate/kill a screen, resume that screen and then enter <code>Ctrl+a k</code>. You will get a confirmation before killing the screen.<br/>
 <img src="https://lh3.googleusercontent.com/aYusDu27M72tacZkTQn0r4RUOzD34g6k6MX5E5qa-Sef1ENsuWvCmLeIGmMIxJKnC-MeEXULvH18awOYCZC0Alc614WkGpArvqg7uU4IpNYkxRQq7uf6Lpq8kEqjQnW8_GWsgzo7b4oyHRNUQRTDqdZ2APDU8hwXYjA-a1vgmiZDEAlVM32aKLfk9LuJC-gJJOaD6aNv1IZtFU4WexoAJUznzaHBXdpCPxvmGl3odJJDZhFDczKPpnvL8Ic4zLExKGMiGbNtF757dn3rR67coQX1RUbUVM65Az1VXDBRsGJkMlAvY3ZCYNAq_YHzzTsY08UeHyx8tMKByr0ho9Hy6KS_ib4Xe3lH9mbM06e3o9ZgNypbgqNyjKroxgM56EfIHYinqXYPDo8yPCXJe8OQcmKdulh_xgWMX5qDk3e5DcL85tLlzttpmrH8xS9UfeIuI8xil-vse8lwlDf_SS12y9lf4LluHhtRtlZkeZEd6pFDgsKzPpJrqx6rBAOs-wpX1UjBca83l6SFg2vbaES6U05vGiGKNwgOFBl59DzHZw9vfEUb5SEEWhzWX4y8PoXndB1VZ1U9vKGzfiuIzBFSET9mxTDLnVJP=w383-h177-no" title="Terminate-confirm" alt="Kill Screen" /></p></li>
 </ul>
 
