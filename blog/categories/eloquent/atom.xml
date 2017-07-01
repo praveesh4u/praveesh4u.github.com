@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Laravel, | The Starting Point]]></title>
-  <link href="http://praveesh4u.github.io/blog/categories/laravel/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Eloquent | The Starting Point]]></title>
+  <link href="http://praveesh4u.github.io/blog/categories/eloquent/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
   <updated>2017-07-01T21:48:56+05:30</updated>
   <id>http://praveesh4u.github.io/</id>

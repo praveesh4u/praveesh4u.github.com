@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP, | The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2017-07-01T21:35:15+05:30</updated>
+  <updated>2017-07-01T21:48:56+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -26,54 +26,57 @@
 
 <p>On Address model we will have a column to store the customer&rsquo;s id and another colum to represent whether the customer is a company or a person.</p>
 
-<p>Let&rsquo;s consider the following schema:</p>
-
-<ol>
-<li>id</li>
-<li>customer_type</li>
-<li>customer_id</li>
-</ol>
-
+<p>Let&rsquo;s consider the following schema:
+<code>php Basic Schema
+ id
+ customer_type
+ customer_id
+</code></p>
 
 <h5>On Person Model</h5>
 
-<p>```
-public function address()</p>
+<p>``` php Person.php
+public function address()
+{</p>
 
-<pre><code>{
-    return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-}
+<pre><code>return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
 </code></pre>
 
-<p>```</p>
+<p>}
+```</p>
 
 <h5>On Company Model</h5>
 
-<p>```
-public function address()</p>
+<p>``` php Company.php
+public function address()
+{</p>
 
-<pre><code>{
-    return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-}
+<pre><code>return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
 </code></pre>
 
-<p>```</p>
+<p>}
+```</p>
 
 <h5>On Address Model</h5>
 
-<p>```</p>
+<p>``` php Address.php
+public function customer()
+{</p>
 
-<pre><code>public function customer()
-{
-    return $this-&gt;morphTo('customer','customer_type');
-}
+<pre><code>return $this-&gt;morphTo('customer','customer_type');
 </code></pre>
 
-<p>````</p>
+<p>}
+<code>
+The arguments passed to the morphTo method has to match the column name for the foreign key on the model that is common to the other two models. Conside the following case,
+</code>
+$this->morphTo(&lsquo;xxxx&rsquo;,&lsquo;yyyyy&rsquo;);
+<code>
+In this case, there should be a column on the Address modal with name</code>xxxx_id<code>to represent the foreign key of the related model on the shared model table and there should be a column named</code>yyyyy<code>on the shared model to represnt the type. That is column</code>yyyyy``` on address table should represnt whether the id on the xxxx_id column represents a company or a customer.</p>
 
 <h3>Saving relations &ndash; Adding a new address to a customer</h3>
 
-<p><code>
+<p><code>php  Saving
 $user = User::find(1);
 $address = new Address();
 $address-&gt;address = 'Test';
@@ -82,7 +85,7 @@ $user-&gt;address()-&gt;save($address);
 
 <h3>Saving relations &ndash; Associating a customer with an address</h3>
 
-<p><code>
+<p><code>php Saving
 $address = new Address();
 $address = User::find(1);
 $address-&gt;address = "Test";

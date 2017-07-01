@@ -121,75 +121,89 @@
 
 <p>Let&rsquo;s consider the following schema:</p>
 
-<ol>
-<li>id</li>
-<li>customer_type</li>
-<li>customer_id</li>
-</ol>
+<figure class='code'><figcaption><span>Basic Schema</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'> <span class="nx">id</span>
+</span><span class='line'> <span class="nx">customer_type</span>
+</span><span class='line'> <span class="nx">customer_id</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h5>On Person Model</h5>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Person.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public function address()
-</span><span class='line'>    {
-</span><span class='line'>        return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">address</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">morphMany</span><span class="p">(</span><span class="s1">&#39;App\Models\Address&#39;</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="s1">&#39;customer_type&#39;</span><span class="p">,</span><span class="s1">&#39;customer_id&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h5>On Company Model</h5>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Company.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public function address()
-</span><span class='line'>    {
-</span><span class='line'>        return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">address</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">morphMany</span><span class="p">(</span><span class="s1">&#39;App\Models\Address&#39;</span><span class="p">,</span><span class="k">null</span><span class="p">,</span><span class="s1">&#39;customer_type&#39;</span><span class="p">,</span><span class="s1">&#39;customer_id&#39;</span><span class="p">,</span><span class="s1">&#39;id&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h5>On Address Model</h5>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Address.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>public function customer()
-</span><span class='line'>{
-</span><span class='line'>    return $this-&gt;morphTo('customer','customer_type');
-</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="k">public</span> <span class="k">function</span> <span class="nf">customer</span><span class="p">()</span>
+</span><span class='line'><span class="p">{</span>
+</span><span class='line'>    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">morphTo</span><span class="p">(</span><span class="s1">&#39;customer&#39;</span><span class="p">,</span><span class="s1">&#39;customer_type&#39;</span><span class="p">);</span>
+</span><span class='line'><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
-<p>`</p>
+<p>The arguments passed to the morphTo method has to match the column name for the foreign key on the model that is common to the other two models. Conside the following case,</p>
+
+<figure class='code'><figcaption><span>Address.php</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">morphTo</span><span class="p">(</span><span class="s1">&#39;xxxx&#39;</span><span class="p">,</span><span class="s1">&#39;yyyyy&#39;</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>In this case, there should be a column on the Address modal with name <code>xxxx_id</code> to represent the foreign key of the related model on the shared model table and there should be a column named <code>yyyyy</code> on the shared model to represnt the type. That is column <code>yyyyy</code> on address table should represnt whether the id on the xxxx_id column represents a company or a customer.</p>
 
 <h3>Saving relations &ndash; Adding a new address to a customer</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Saving</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$user = User::find(1);
-</span><span class='line'>$address = new Address();
-</span><span class='line'>$address-&gt;address = 'Test';
-</span><span class='line'>$user-&gt;address()-&gt;save($address);</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$user</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Address</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="s1">&#39;Test&#39;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$user</span><span class="o">-&gt;</span><span class="na">address</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">(</span><span class="nv">$address</span><span class="p">);</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <h3>Saving relations &ndash; Associating a customer with an address</h3>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>Saving</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>$address = new Address();
-</span><span class='line'>$address = User::find(1);
-</span><span class='line'>$address-&gt;address = "Test";
-</span><span class='line'>$address-&gt;customer()-&gt;associate($user);
-</span><span class='line'>$address-&gt;save();</span></code></pre></td></tr></table></div></figure>
+</pre></td><td class='code'><pre><code class='php'><span class='line'><span class="nv">$address</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Address</span><span class="p">();</span>
+</span><span class='line'><span class="nv">$address</span> <span class="o">=</span> <span class="nx">User</span><span class="o">::</span><span class="na">find</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">address</span> <span class="o">=</span> <span class="s2">&quot;Test&quot;</span><span class="p">;</span>
+</span><span class='line'><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">customer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">associate</span><span class="p">(</span><span class="nv">$user</span><span class="p">);</span>
+</span><span class='line'><span class="nv">$address</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -220,7 +234,7 @@
 
 <span class="categories">
   
-    <a class='category' href='/blog/categories/laravel/'>Laravel</a>, <a class='category' href='/blog/categories/php/'>PHP,</a>
+    <a class='category' href='/blog/categories/eloquent/'>Eloquent</a>, <a class='category' href='/blog/categories/laravel/'>Laravel,</a>, <a class='category' href='/blog/categories/php/'>PHP,</a>
   
 </span>
 
