@@ -9,8 +9,7 @@
   <meta name="author" content="praveesh4u@gmail.com">
 
   
-  <meta name="description" content="
-">
+  <meta name="description" content="Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic. The default documentation is not quite clear about how you can use regular column &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -91,7 +90,7 @@
   <header>
     
       <!-- Now we're back to normal posts. Note the links used under href in both headers.-->
-        <h1 class="entry-title"><a href="/blog/2017/07/01/blabberings/">Testing Laravel</a></h1>
+        <h1 class="entry-title"><a href="/blog/2017/07/01/blabberings/">Laravel Polymorphic Relations</a></h1>
       
     
     
@@ -115,7 +114,88 @@
   </header>
 
 
-  <div class="entry-content">
+  <div class="entry-content"><p>Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic. The default documentation is not quite clear about how you can use regular column names instead of weird column names like &ldquo;commentable&rdquo;, &ldquo;postable&rdquo; etc.</p>
+
+<h2>Problem statement</h2>
+
+<p>We have two Models for storing the Address and Customer details of a firm. An Address may be associated with a person or a company as these two are subsets of the firm&rsquo;s customers. A Customer can have more than one address associated with them. Since the customer can be either a company or a person, we can represent this scenario using a polymorphic relation between Customer, Company and Address.</p>
+
+<p>On Address model we will have a column to store the customer&rsquo;s id and another colum to represent whether the customer is a company or a person.</p>
+
+<p>Let&rsquo;s consider the following schema:</p>
+
+<ol>
+<li>id</li>
+<li>customer_type</li>
+<li>customer_id</li>
+</ol>
+
+
+<h5>On Person Model</h5>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public function address()
+</span><span class='line'>    {
+</span><span class='line'>        return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>On Company Model</h5>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public function address()
+</span><span class='line'>    {
+</span><span class='line'>        return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
+</span><span class='line'>    }</span></code></pre></td></tr></table></div></figure>
+
+
+<h5>On Address Model</h5>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>public function customer()
+</span><span class='line'>{
+</span><span class='line'>    return $this-&gt;morphTo('customer','customer_type');
+</span><span class='line'>}</span></code></pre></td></tr></table></div></figure>
+
+
+<p>`</p>
+
+<h3>Saving relations &ndash; Adding a new address to a customer</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$user = User::find(1);
+</span><span class='line'>$address = new Address();
+</span><span class='line'>$address-&gt;address = 'Test';
+</span><span class='line'>$user-&gt;address()-&gt;save($address);</span></code></pre></td></tr></table></div></figure>
+
+
+<h3>Saving relations &ndash; Associating a customer with an address</h3>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>$address = new Address();
+</span><span class='line'>$address = User::find(1);
+</span><span class='line'>$address-&gt;address = "Test";
+</span><span class='line'>$address-&gt;customer()-&gt;associate($user);
+</span><span class='line'>$address-&gt;save();</span></code></pre></td></tr></table></div></figure>
+
+
+
 </div>
   
   
@@ -919,7 +999,7 @@ That is, in our case, a form created with no validation group would get validate
   <div class="entry-content"><p><b>Step by step instruction<b></p>
 
 <ol>
-<li><p>clone Source branch to <a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#112;&#114;&#x61;&#x76;&#x65;&#101;&#115;&#104;&#52;&#117;&#64;&#x67;&#105;&#116;&#x68;&#x75;&#98;&#x2e;&#99;&#x6f;&#109;">&#x70;&#114;&#97;&#x76;&#x65;&#101;&#x73;&#x68;&#x34;&#x75;&#x40;&#x67;&#105;&#116;&#104;&#117;&#x62;&#46;&#x63;&#x6f;&#109;</a></p>
+<li><p>clone Source branch to <a href="&#x6d;&#x61;&#x69;&#x6c;&#x74;&#111;&#x3a;&#x70;&#x72;&#x61;&#118;&#x65;&#101;&#115;&#x68;&#52;&#117;&#x40;&#103;&#x69;&#x74;&#104;&#x75;&#98;&#x2e;&#x63;&#111;&#109;">&#112;&#x72;&#x61;&#118;&#101;&#101;&#x73;&#x68;&#52;&#x75;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#46;&#99;&#111;&#109;</a></p>
 
 <pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
 </code></pre></li>
@@ -997,7 +1077,7 @@ That is, in our case, a form created with no validation group would get validate
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2017/07/01/blabberings/">Testing Laravel</a>
+        <a href="/blog/2017/07/01/blabberings/">Laravel Polymorphic Relations</a>
       </li>
     
       <li class="post">

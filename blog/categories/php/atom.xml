@@ -4,7 +4,7 @@
   <title><![CDATA[Category: PHP, | The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/blog/categories/php/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2017-07-01T18:39:52+05:30</updated>
+  <updated>2017-07-01T21:35:15+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -14,11 +14,81 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Testing Laravel]]></title>
+    <title type="html"><![CDATA[Laravel Polymorphic relations]]></title>
     <link href="http://praveesh4u.github.io/blog/2017/07/01/blabberings/"/>
     <updated>2017-07-01T17:57:23+05:30</updated>
     <id>http://praveesh4u.github.io/blog/2017/07/01/blabberings</id>
-    <content type="html"><![CDATA[
+    <content type="html"><![CDATA[<p>Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic. The default documentation is not quite clear about how you can use regular column names instead of weird column names like &ldquo;commentable&rdquo;, &ldquo;postable&rdquo; etc.</p>
+
+<h2>Problem statement</h2>
+
+<p>We have two Models for storing the Address and Customer details of a firm. An Address may be associated with a person or a company as these two are subsets of the firm&rsquo;s customers. A Customer can have more than one address associated with them. Since the customer can be either a company or a person, we can represent this scenario using a polymorphic relation between Customer, Company and Address.</p>
+
+<p>On Address model we will have a column to store the customer&rsquo;s id and another colum to represent whether the customer is a company or a person.</p>
+
+<p>Let&rsquo;s consider the following schema:</p>
+
+<ol>
+<li>id</li>
+<li>customer_type</li>
+<li>customer_id</li>
+</ol>
+
+
+<h5>On Person Model</h5>
+
+<p>```
+public function address()</p>
+
+<pre><code>{
+    return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
+}
+</code></pre>
+
+<p>```</p>
+
+<h5>On Company Model</h5>
+
+<p>```
+public function address()</p>
+
+<pre><code>{
+    return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
+}
+</code></pre>
+
+<p>```</p>
+
+<h5>On Address Model</h5>
+
+<p>```</p>
+
+<pre><code>public function customer()
+{
+    return $this-&gt;morphTo('customer','customer_type');
+}
+</code></pre>
+
+<p>````</p>
+
+<h3>Saving relations &ndash; Adding a new address to a customer</h3>
+
+<p><code>
+$user = User::find(1);
+$address = new Address();
+$address-&gt;address = 'Test';
+$user-&gt;address()-&gt;save($address);
+</code></p>
+
+<h3>Saving relations &ndash; Associating a customer with an address</h3>
+
+<p><code>
+$address = new Address();
+$address = User::find(1);
+$address-&gt;address = "Test";
+$address-&gt;customer()-&gt;associate($user);
+$address-&gt;save();
+</code></p>
 ]]></content>
   </entry>
   
