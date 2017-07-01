@@ -4,7 +4,7 @@
   <title><![CDATA[The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2017-07-01T21:48:56+05:30</updated>
+  <updated>2017-07-01T22:13:17+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -18,13 +18,13 @@
     <link href="http://praveesh4u.github.io/blog/2017/07/01/blabberings/"/>
     <updated>2017-07-01T17:57:23+05:30</updated>
     <id>http://praveesh4u.github.io/blog/2017/07/01/blabberings</id>
-    <content type="html"><![CDATA[<p>Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic. The default documentation is not quite clear about how you can use regular column names instead of weird column names like &ldquo;commentable&rdquo;, &ldquo;postable&rdquo; etc.</p>
+    <content type="html"><![CDATA[<p>Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic relations. The default documentation is not quite clear about how you can use regular column names instead of weird column names like &ldquo;commentable&rdquo;, &ldquo;postable&rdquo; etc.</p>
 
 <h2>Problem statement</h2>
 
 <p>We have two Models for storing the Address and Customer details of a firm. An Address may be associated with a person or a company as these two are subsets of the firm&rsquo;s customers. A Customer can have more than one address associated with them. Since the customer can be either a company or a person, we can represent this scenario using a polymorphic relation between Customer, Company and Address.</p>
 
-<p>On Address model we will have a column to store the customer&rsquo;s id and another colum to represent whether the customer is a company or a person.</p>
+<p>On Address model we will have a column to store the customer&rsquo;s id and another column to represent whether the customer is a company or a person.</p>
 
 <p>Let&rsquo;s consider the following schema:</p>
 
@@ -801,7 +801,7 @@ That is, in our case, a form created with no validation group would get validate
     <content type="html"><![CDATA[<p><b>Step by step instruction<b></p>
 
 <ol>
-<li><p>clone Source branch to <a href="&#x6d;&#97;&#x69;&#x6c;&#116;&#111;&#58;&#x70;&#x72;&#97;&#118;&#x65;&#101;&#x73;&#104;&#x34;&#x75;&#x40;&#x67;&#105;&#x74;&#x68;&#117;&#x62;&#46;&#x63;&#x6f;&#x6d;">&#x70;&#114;&#x61;&#118;&#101;&#101;&#x73;&#104;&#52;&#x75;&#x40;&#x67;&#105;&#x74;&#104;&#117;&#x62;&#x2e;&#x63;&#111;&#109;</a></p>
+<li><p>clone Source branch to <a href="&#109;&#x61;&#105;&#108;&#116;&#111;&#58;&#x70;&#114;&#97;&#118;&#x65;&#x65;&#115;&#x68;&#x34;&#117;&#64;&#x67;&#105;&#x74;&#x68;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#112;&#114;&#97;&#118;&#101;&#x65;&#115;&#104;&#x34;&#117;&#x40;&#x67;&#x69;&#116;&#104;&#117;&#98;&#46;&#x63;&#111;&#109;</a></p>
 
 <pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
 </code></pre></li>
