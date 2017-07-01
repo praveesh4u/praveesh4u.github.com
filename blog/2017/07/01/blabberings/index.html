@@ -5,11 +5,12 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Setting Up Octopress - The Starting Point</title>
+  <title>Blabberings - The Starting Point</title>
   <meta name="author" content="praveesh4u@gmail.com">
 
   
-  <meta name="description" content="Step by step instruction clone Source branch to &#x70;&#114;&#97;&#x76;&#101;&#101;&#x73;&#x68;&#52;&#117;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&# &hellip;">
+  <meta name="description" content="
+">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/">
+  <link rel="canonical" href="http://praveesh4u.github.io/blog/2017/07/01/blabberings/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -87,7 +88,7 @@
   <header>
     
       
-        <h1 class="entry-title">Setting Up Octopress</h1>
+        <h1 class="entry-title">Blabberings</h1>
       
     
     
@@ -104,74 +105,14 @@
   
 
 
-<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+<time datetime="2017-07-01T17:57:23+05:30" pubdate data-updated="true">Jul 1<span>st</span>, 2017</time>
         
       </p>
     
   </header>
 
 
-<div class="entry-content"><p><b>Step by step instruction<b></p>
-
-<ol>
-<li><p>clone Source branch to <a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#112;&#114;&#x61;&#118;&#101;&#x65;&#115;&#x68;&#x34;&#117;&#x40;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#109;">&#x70;&#114;&#97;&#x76;&#101;&#101;&#x73;&#x68;&#52;&#117;&#x40;&#x67;&#105;&#x74;&#x68;&#x75;&#98;&#46;&#99;&#111;&#x6d;</a></p>
-
-<pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
-</code></pre></li>
-<li><p>clone Master branch to praveesh4u@github.com/ _deploy</p>
-
-<pre><code> $ cd praveesh4u@github.com
-
- $ git clone  git@github.com:praveesh4u/praveesh4u.github.com.git _deploy
-</code></pre></li>
-<li><p>If these steps are already done, do the following</p>
-
-<pre><code> $ cd praveesh4u@github.com  
- $ git pull origin source
- $ cd praveesh4u@github.com/_deploy 
- $ git pull origin master
-</code></pre></li>
-<li><p>Next, run</p>
-
-<pre><code> $ gem install bundler
- $ bundle install
- $ rake setup_github_pages
-</code></pre>
-
-<p>When prompted, enter the repository&rsquo;s address-</p>
-
-<pre><code>   git@github.com:praveesh4u/praveesh4u@github.com
-</code></pre></li>
-<li><p>Configure git global parameters like username and email address using</p>
-
-<pre><code> $ git config --global user.name "Praveesh A- Linux" 
- $ git config --global user.email "praveesh4u@gmail.com"
-</code></pre></li>
-<li>Add/Edit posts</li>
-<li><p>Generate the post</p>
-
-<pre><code> $ rake generate
-</code></pre></li>
-<li><p>Preview the generated post using</p>
-
-<pre><code> $ rake preview 
-</code></pre>
-
-<p>To view the preview, go to localhost:4000</p></li>
-<li><p>Commit the changes</p>
-
-<pre><code> $ git add .
- $ git commit -a -m "Commit message"
- $ git pull origin source (to sync with the server)
- $ git push origin source
-</code></pre></li>
-<li><p>Publish the post</p>
-
-<pre><code>$ rake deploy
-</code></pre></li>
-<li>Done!!</li>
-</ol>
-
+<div class="entry-content">
 </div>
 
 
@@ -194,7 +135,7 @@
   
 
 
-<time datetime="2014-01-22T23:02:07+05:30" pubdate data-updated="true">Jan 22<span>nd</span>, 2014</time>
+<time datetime="2017-07-01T17:57:23+05:30" pubdate data-updated="true">Jul 1<span>st</span>, 2017</time>
       
 
 
@@ -202,7 +143,7 @@
     
       <div class="sharing">
   
-  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/" data-via="@praveesh4u" data-counturl="http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/" >Tweet</a>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://praveesh4u.github.io/blog/2017/07/01/blabberings/" data-via="@praveesh4u" data-counturl="http://praveesh4u.github.io/blog/2017/07/01/blabberings/" >Tweet</a>
   
   
   
@@ -211,8 +152,8 @@
     
     <p class="meta">
       
+        <a class="basic-alignment left articlenav" href="/blog/2016/05/20/the-screen-command-in-linux/" title="Previous Post: The Screen command in Linux">&laquo; The Screen command in Linux</a>
       
-        <a class="basic-alignment right articlenav" href="/blog/2014/01/22/symfony-2-validation-groups/" title="Next Post: Symfony 2 Validation groups">Symfony 2 Validation groups &raquo;</a>
       
     </p>
   </footer>
@@ -287,8 +228,8 @@
       
         
         // var disqus_developer = 1;
-        var disqus_identifier = 'http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/';
-        var disqus_url = 'http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/';
+        var disqus_identifier = 'http://praveesh4u.github.io/blog/2017/07/01/blabberings/';
+        var disqus_url = 'http://praveesh4u.github.io/blog/2017/07/01/blabberings/';
         var disqus_script = 'embed.js';
       
     (function () {
