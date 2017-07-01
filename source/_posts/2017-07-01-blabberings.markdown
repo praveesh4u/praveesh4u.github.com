@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Blabberings"
+title: "Testing Laravel"
 date: 2017-07-01 17:57:23 +0530
 comments: true
-categories: 
+categories: PHP, Laravel
 ---
