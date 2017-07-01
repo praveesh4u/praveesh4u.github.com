@@ -6,13 +6,13 @@ comments: true
 categories: PHP, Laravel, Eloquent
 ---
 
-Let's see how we can customize Eloquent's polymorphic. The default documentation is not quite clear about how you can use regular column names instead of weird column names like "commentable", "postable" etc.
+Let's see how we can customize Eloquent's polymorphic relations. The default documentation is not quite clear about how you can use regular column names instead of weird column names like "commentable", "postable" etc.
 
 ##Problem statement
 
 We have two Models for storing the Address and Customer details of a firm. An Address may be associated with a person or a company as these two are subsets of the firm's customers. A Customer can have more than one address associated with them. Since the customer can be either a company or a person, we can represent this scenario using a polymorphic relation between Customer, Company and Address.
 
-On Address model we will have a column to store the customer's id and another colum to represent whether the customer is a company or a person.
+On Address model we will have a column to store the customer's id and another column to represent whether the customer is a company or a person.
 
 Let's consider the following schema:
 ``` php Basic Schema
