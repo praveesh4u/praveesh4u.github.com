@@ -4,7 +4,7 @@
   <title><![CDATA[The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2017-07-03T18:01:10+05:30</updated>
+  <updated>2017-07-23T21:45:28+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -12,6 +12,106 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Debugging PHP Scripts with Xdebug]]></title>
+    <link href="http://praveesh4u.github.io/blog/2017/07/23/debugging-php-scripts-with-xdebug/"/>
+    <updated>2017-07-23T19:50:08+05:30</updated>
+    <id>http://praveesh4u.github.io/blog/2017/07/23/debugging-php-scripts-with-xdebug</id>
+    <content type="html"><![CDATA[<h2>Debugging PHP using xdebug</h2>
+
+<p>This is just a small post meant for all those poor souls like me who couldn&rsquo;t get xdebug configured as easy as it should be. The steps are quite straight forward but still I got cought up in &ldquo;the set up&rdquo; for nearly 3hours.</p>
+
+<h3>Environment</h3>
+
+<ul>
+<li>Mac OS X Sierra</li>
+<li>PHP 7.1</li>
+<li>PHPStorm</li>
+</ul>
+
+
+<p>I am assuming that you have homebrew installed on your mac.</p>
+
+<p>Step 1: Run <code>brew doctor</code> in the terminal and follow the onscreen instructions to fix issues with homebrew if any.</p>
+
+<p>Step 2: To install xdebug, run <code>brew install phpXX-xdebug</code> where XX stands for the PHP version that you are using. For example, if you are using PHP 7.1, run <code>brew install php71-xdebug</code> and if you are using PHP 7.0, run <code>brew install php70-xdebug</code>.</p>
+
+<p>Step 3: Navigate to <code>/usr/local/etc/php/7.1/conf.d</code> and add the following lines to <code>ext-xdebug.ini</code>.</p>
+
+<figure class='code'><figcaption><span>/usr/local/etc/php/7.1/conf.d/ext-xdebug.ini </span></figcaption>
+<div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class='php'><span class='line'>      <span class="p">[</span><span class="nx">xdebug</span><span class="p">]</span>
+</span><span class='line'>      <span class="nx">zend_extension</span><span class="o">=</span><span class="s2">&quot;/usr/local/opt/php71-xdebug/xdebug.so&quot;</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_connect_back</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">idekey</span> <span class="o">=</span> <span class="nx">PHPSTORM</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">default_enable</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_mode</span><span class="o">=</span><span class="nx">req</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_host</span> <span class="o">=</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_enable</span> <span class="o">=</span> <span class="mi">1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_port</span> <span class="o">=</span> <span class="mi">9333</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_handler</span> <span class="o">=</span> <span class="nx">dbgp</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">profiler_enable</span><span class="o">=</span><span class="mi">0</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">profiler_enable_trigger</span><span class="o">=</span><span class="mi">1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_autostart</span><span class="o">=</span><span class="mi">1</span>
+</span><span class='line'>      <span class="nx">xdebug</span><span class="o">.</span><span class="nx">idekey</span><span class="o">=</span><span class="nx">PHPSTORM</span>
+</span><span class='line'>      <span class="p">;</span> <span class="nx">xdebug</span><span class="o">.</span><span class="nx">remote_log</span><span class="o">=/</span><span class="nx">usr</span><span class="o">/</span><span class="nx">local</span><span class="o">/</span><span class="nx">etc</span><span class="o">/</span><span class="nx">php</span><span class="o">/</span><span class="mf">7.1</span><span class="o">/</span><span class="nx">xdebug</span><span class="o">.</span><span class="nx">log</span>
+</span><span class='line'>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Step 4: The first line in the file
+<code>zend_extension="/usr/local/opt/php71-xdebug/xdebug.so"</code> will be already present in the file. Please add this if not already present.</p>
+
+<p>Step 5: By default, xdebug runns on port 9000. I have changed it to 9333 as I have other stuff that runs on port 9000</p>
+
+<p>Step 6: You can monitor the xdebug logs by uncommenting this line
+<code>; xdebug.remote_log=/usr/local/etc/php/7.1/xdebug.log</code>.
+Pleasee note that this file can get really really big over the time. So, once you have got xdebug up and running, it is a good idea to stop the log.</p>
+
+<p>Step 7: In PHP storm, under preferences, navigate to <em>Languages &amp; Frameworks > PHP > Debug</em> and set the following parameters</p>
+
+<h6>External connections</h6>
+
+<ul>
+<li>Detect path mappings from deployment configurations</li>
+<li>Break at first line in PHP Scripts
+
+<h6>Xdebug</h6></li>
+<li>Debug port 9333(the same port nummber that we give in step 5)</li>
+<li>Check &lsquo;Can accept external connections&rsquo;</li>
+<li>Check &lsquo;Force break at the first line when no path mapping specified&rsquo;</li>
+<li>Check &lsquo;Force break at the first line when a script is outside the project&rsquo;
+<iframe src="https://drive.google.com/file/d/0B79rmAsCK2UJdEIxLVoxUFFlcVU/preview" width="640" height="480"></iframe>
+Step 8:  In PHP storm, under preferences, navigate to *Languages &amp; Frameworks > PHP > Servers * create a configuration for the local server and add xdebug as the debugger.</li>
+</ul>
+
+
+<p>  <iframe src="https://drive.google.com/file/d/0B79rmAsCK2UJU2JWTXVvSTRpdjg/preview" width="640" height="480"></iframe></p>
+
+<p>Step 9: Once you have configured the server, you would need to create a debug configuration. For this navigate to Edit configurations under Run menu and add a new configuration based on PHP Remote debug. For this, click on the + icon on the top left corner and select the server created in step 8 as the server and give the value of xdebug.idekey in step 3 as the Ide Key and give a suitable name to the configuration
+  <iframe src="https://drive.google.com/file/d/0B79rmAsCK2UJNFV3UlktdHc0RFk/preview" width="640" height="480"></iframe></p>
+
+<p>Step 10: Now, select the debug configuration and start listening for the debug connections by clicking on the receiver icon in PHPStorm. Once you have done this, the debug window will open inside php when your script is run.</p>
+
+<p>  <iframe src="https://drive.google.com/file/d/0B79rmAsCK2UJS0tjdVpmUWpIME0/preview" width="640" height="480"></iframe></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Laravel Polymorphic relations]]></title>
@@ -801,7 +901,7 @@ That is, in our case, a form created with no validation group would get validate
     <content type="html"><![CDATA[<p><b>Step by step instruction<b></p>
 
 <ol>
-<li><p>clone Source branch to <a href="&#109;&#97;&#105;&#x6c;&#116;&#x6f;&#58;&#112;&#114;&#x61;&#x76;&#x65;&#x65;&#x73;&#x68;&#52;&#x75;&#x40;&#x67;&#x69;&#116;&#x68;&#117;&#x62;&#46;&#x63;&#111;&#109;">&#x70;&#114;&#x61;&#118;&#x65;&#101;&#x73;&#x68;&#x34;&#117;&#x40;&#x67;&#x69;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#111;&#109;</a></p>
+<li><p>clone Source branch to <a href="&#109;&#97;&#x69;&#108;&#x74;&#111;&#x3a;&#112;&#x72;&#97;&#118;&#x65;&#101;&#x73;&#104;&#x34;&#117;&#64;&#103;&#105;&#x74;&#x68;&#x75;&#x62;&#x2e;&#x63;&#111;&#x6d;">&#112;&#114;&#x61;&#x76;&#101;&#101;&#x73;&#104;&#52;&#x75;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#x6f;&#x6d;</a></p>
 
 <pre><code> $ git clone -b source git@github.com:praveesh4u/praveesh4u.github.com.git
 </code></pre></li>

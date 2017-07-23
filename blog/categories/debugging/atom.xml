@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: PHP, | The Starting Point]]></title>
-  <link href="http://praveesh4u.github.io/blog/categories/php/atom.xml" rel="self"/>
+  <title><![CDATA[Category: Debugging | The Starting Point]]></title>
+  <link href="http://praveesh4u.github.io/blog/categories/debugging/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
   <updated>2017-07-23T21:45:28+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
@@ -108,88 +108,6 @@ Step 8:  In PHP storm, under preferences, navigate to *Languages &amp; Framework
 <p>Step 10: Now, select the debug configuration and start listening for the debug connections by clicking on the receiver icon in PHPStorm. Once you have done this, the debug window will open inside php when your script is run.</p>
 
 <p>  <iframe src="https://drive.google.com/file/d/0B79rmAsCK2UJS0tjdVpmUWpIME0/preview" width="640" height="480"></iframe></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Laravel Polymorphic relations]]></title>
-    <link href="http://praveesh4u.github.io/blog/2017/07/01/blabberings/"/>
-    <updated>2017-07-01T17:57:23+05:30</updated>
-    <id>http://praveesh4u.github.io/blog/2017/07/01/blabberings</id>
-    <content type="html"><![CDATA[<p>Let&rsquo;s see how we can customize Eloquent&rsquo;s polymorphic relations. The default documentation is not quite clear about how you can use regular column names instead of weird column names like &ldquo;commentable&rdquo;, &ldquo;postable&rdquo; etc.</p>
-
-<h2>Problem statement</h2>
-
-<p>We have two Models for storing the Address and Customer details of a firm. An Address may be associated with a person or a company as these two are subsets of the firm&rsquo;s customers. A Customer can have more than one address associated with them. Since the customer can be either a company or a person, we can represent this scenario using a polymorphic relation between Customer, Company and Address.</p>
-
-<p>On Address model we will have a column to store the customer&rsquo;s id and another column to represent whether the customer is a company or a person.</p>
-
-<p>Let&rsquo;s consider the following schema:
-<code>php Basic Schema
- id
- customer_type
- customer_id
-</code></p>
-
-<h5>On Person Model</h5>
-
-<p>``` php Person.php
-public function address()
-{</p>
-
-<pre><code>return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-</code></pre>
-
-<p>}
-```</p>
-
-<h5>On Company Model</h5>
-
-<p>``` php Company.php
-public function address()
-{</p>
-
-<pre><code>return $this-&gt;morphMany('App\Models\Address',null,'customer_type','customer_id','id');
-</code></pre>
-
-<p>}
-```</p>
-
-<h5>On Address Model</h5>
-
-<p>``` php Address.php
-public function customer()
-{</p>
-
-<pre><code>return $this-&gt;morphTo('customer','customer_type');
-</code></pre>
-
-<p>}
-<code>
-The arguments passed to the morphTo method has to match the column name for the foreign key on the model that is common to the other two models. Conside the following case,
-</code>
-$this->morphTo(&lsquo;xxxx&rsquo;,&lsquo;yyyyy&rsquo;);
-<code>
-In this case, there should be a column on the Address modal with name</code>xxxx_id<code>to represent the foreign key of the related model on the shared model table and there should be a column named</code>yyyyy<code>on the shared model to represnt the type. That is column</code>yyyyy``` on address table should represnt whether the id on the xxxx_id column represents a company or a customer.</p>
-
-<h3>Saving relations &ndash; Adding a new address to a customer</h3>
-
-<p><code>php  Saving
-$user = User::find(1);
-$address = new Address();
-$address-&gt;address = 'Test';
-$user-&gt;address()-&gt;save($address);
-</code></p>
-
-<h3>Saving relations &ndash; Associating a customer with an address</h3>
-
-<p><code>php Saving
-$address = new Address();
-$address = User::find(1);
-$address-&gt;address = "Test";
-$address-&gt;customer()-&gt;associate($user);
-$address-&gt;save();
-</code></p>
 ]]></content>
   </entry>
   
