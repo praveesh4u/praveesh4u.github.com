@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Xdebug, | The Starting Point]]></title>
   <link href="http://praveesh4u.github.io/blog/categories/xdebug/atom.xml" rel="self"/>
   <link href="http://praveesh4u.github.io/"/>
-  <updated>2017-07-23T21:45:28+05:30</updated>
+  <updated>2017-07-23T21:47:06+05:30</updated>
   <id>http://praveesh4u.github.io/</id>
   <author>
     <name><![CDATA[praveesh4u@gmail.com]]></name>
@@ -18,9 +18,7 @@
     <link href="http://praveesh4u.github.io/blog/2017/07/23/debugging-php-scripts-with-xdebug/"/>
     <updated>2017-07-23T19:50:08+05:30</updated>
     <id>http://praveesh4u.github.io/blog/2017/07/23/debugging-php-scripts-with-xdebug</id>
-    <content type="html"><![CDATA[<h2>Debugging PHP using xdebug</h2>
-
-<p>This is just a small post meant for all those poor souls like me who couldn&rsquo;t get xdebug configured as easy as it should be. The steps are quite straight forward but still I got cought up in &ldquo;the set up&rdquo; for nearly 3hours.</p>
+    <content type="html"><![CDATA[<p>This is just a small post meant for all those poor souls like me who couldn&rsquo;t get xdebug configured as easy as it should be. The steps are quite straight forward but still I got cought up in &ldquo;the set up&rdquo; for nearly 3hours.</p>
 
 <h3>Environment</h3>
 
