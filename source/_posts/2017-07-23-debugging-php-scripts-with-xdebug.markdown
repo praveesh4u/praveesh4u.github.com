@@ -5,7 +5,6 @@ date: 2017-07-23 19:50:08 +0530
 comments: true
 categories: PHP, Xdebug, Debugging
 ---
-## Debugging PHP using xdebug
 
 This is just a small post meant for all those poor souls like me who couldn't get xdebug configured as easy as it should be. The steps are quite straight forward but still I got cought up in "the set up" for nearly 3hours. 
 ### Environment
