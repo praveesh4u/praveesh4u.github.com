@@ -2,38 +2,34 @@
 <urlset xmlns='http://www.sitemaps.org/schemas/sitemap/0.9'>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/22/setting-up-octopress/</loc>
-        <lastmod>2017-07-01T14:42:50+05:30</lastmod>
+        <lastmod>2017-04-18T12:34:25+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/22/symfony-2-validation-groups/</loc>
-        <lastmod>2017-07-01T14:42:50+05:30</lastmod>
+        <lastmod>2017-04-18T12:34:25+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2014/01/23/oauth-in-symfony/</loc>
-        <lastmod>2017-07-01T14:42:50+05:30</lastmod>
-    </url>
-    <url>
-        <loc>http://praveesh4u.github.io/blog/2016/05/20/the-screen-command-in-linux/</loc>
-        <lastmod>2017-07-01T14:42:50+05:30</lastmod>
+        <lastmod>2017-04-18T12:34:25+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2017/07/01/blabberings/</loc>
-        <lastmod>2017-07-01T22:12:19+05:30</lastmod>
+        <lastmod>2017-10-11T07:39:24+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/2017/07/23/debugging-php-scripts-with-xdebug/</loc>
-        <lastmod>2017-07-23T21:46:37+05:30</lastmod>
+        <lastmod>2017-10-11T07:39:24+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/blog/archives/</loc>
-        <lastmod>2017-07-23T21:46:37+05:30</lastmod>
+        <lastmod>2017-10-11T07:39:24+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/</loc>
-        <lastmod>2017-07-23T21:46:37+05:30</lastmod>
+        <lastmod>2017-10-11T07:39:24+05:30</lastmod>
     </url>
     <url>
         <loc>http://praveesh4u.github.io/robots.txt</loc>
-        <lastmod>2017-07-01T14:42:50+05:30</lastmod>
+        <lastmod>2017-04-18T12:34:25+05:30</lastmod>
     </url>
 </urlset>
