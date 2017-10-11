@@ -3,6 +3,7 @@ layout: post
 title: "The Screen command in Linux"
 date: 2016-05-20 15:44:40 +0530
 comments: true
+published: false
 categories:
 - Linux
 - DevOps
